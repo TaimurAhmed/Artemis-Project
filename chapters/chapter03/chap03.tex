@@ -35,18 +35,30 @@ In an earier sub-section titled  \textit{Three Principle Stakeholders} it was de
     \end{itemize}
     
     The rationale for lack of adoption cited can be corroborated against the values of \textit{Web Credibility} and persuasive design, which are discussed in greater detail in a later section. The findings of the aforementioned are embedded in the GUI design and also used as the basis of evaluating Artemis and subsequently re factoring it. Instructor values were iterative incorporated by asking for their feedback throughout the life of the project.
+
+
+    \newpage    
+    \item \textbf{Students}: Possibly the most important of the three stakeholders as the majority of the users are expected to be students. UoB CS conversion students and CS undergraduate student values were incorporated into Artemis via the following exercises:
     
-    \item \textbf{Students}: Possibly the most important of the three stakeholders as the majority of the users are expected to be students. UoB CS conversion students and CS undergraduate students were asked for their opinions via a focus group session to generate ideas for possible features to be developed for Artemis; Which generally resulted in requests for a \textit{Facebook-StackOverflow} style social network as opposed to other mainstream social networks. Students were also asked to use the product and test it thoroughly as part of an open ended evaluation (although they were asked to complete a list of prescribed tasks and finish a questionnaire, they were strongly encouraged to use Artemis and explore it. Students were also encouraged to try and break or hack the code to the best of their ability, to see if any bugs could be found. The details of the evaluation form can be found in Appendix I. Users were actively encouraged to try and break or explore Artemis to see if any bugs or edge cases could be discovered. The evaluation was concluded with a questionnaire designed on Web Credibility principles (discussed later). Based on the bugs reported, student feedback and the results of the questionnaire, Artemis's code was re-factored to reflect the necessary changes and make it more relevant for user values.
+    \begin{itemize}
+        
+        \item \textbf{Focus Group}: An arbitrary group of people from the MSc and BSc Computer Science cohort were asked to participate in a brain storming session to help generate creative ideas for the proposed social  network. The underlying purpose was to generate creative ideas,use cases and possible modalities. The overarching outcome of this exercises was that there was a desire for a Facebook-StackoverFlow styled hybrid social network, as opposed to other mainstream social networks such as Twitter or Reddit(As corroborated by the TELED department,most students expressed a distaste for the relatively \textit{old fashioned} forums currently used at the UoB).
+
+        \item \textbf{Open Ended Evaluation and Refactoring}:  An arbitrary group of ten people from the MSc and BSc Computer Science cohort were asked to participate in an Open Ended Evaluation. As part of the  evaluation participants were asked to perform a series of use cases to thoroughly test Artemis and assess the \textit{Web Credibility} values it is supposed to adhere too. Additionally users were strongly encouraged to explore, break,test and hack Artemis to the best of their abilities. The questionnaire which was designed to evaluate Web Credibility yielded significant feedback relevant tot he GUI and a bug report/user requests list was also generated as a result of the exercises. This feedback was used to refactor Artemis as per user values and design areas that were lacking in quality; Further details are provided later in this report.
+        
+        
+    \end{itemize}
+    
 \end{itemize}
 
-
+ 
 \section{Persuasive Web Design}
 
-At the core of rationale for embedding  learning models \& methodologies, pedagogy and social networks to ultimately develop a TEL solution is the presumption that the application will influence it's users. A TEL solution unable to persuade users in a desirable manner, due to either lack of adoption or otherwise inefficacy, is a solution that will fail or perform poorly; A fact outlined via preliminary informal discussions with the TEL team at the UoB.
+At the core of a rationale for embedding  learning models \& methodologies, pedagogy and social networks to ultimately develop a TEL solution is the presumption that the application will influence it's users. A TEL solution unable to persuade users in a desirable manner, due to either lack of adoption or otherwise inefficacy, is a solution that will fail or perform poorly; A fact outlined via preliminary informal discussions with the TEL team at the UoB.
 
 The broad research area of \textit{captology}, by the Stanford Persuasive Technology Lab (STPL) covers the somewhat controversial study of  how computer and applications can be designed to change what people think and do \cite{Fogg2002a,Fogg2002,Fogg2001,Fogg1999}. Whilst extensive research of this area is deemed beyond the constraints of the project, some consideration is given to the constituent factors that improve user acceptance and/or influence; \textit{Web Credibility} and resultantly \textit{Web Application Security} and \textit{User Accessibility}.
 
-It is proposed that by enhancing web credibility and application security, security the TEL solution can be designed in a manner that enhances user acceptance and adoption; Effectively not just making the TEL solution more effective in achieving it's intended purpose, but also avoiding a common cause of failure for TEL solutions implemented at the UoB i.e. lack of adoption of applications by relevant users.
+It is proposed that by enhancing web credibility and application security, security the TEL solution can be designed in a manner that enhances user acceptance and adoption; Effectively not just making the TEL solution more effective in achieving it's intended purpose, but also avoiding a common cause of failure for TEL solutions implemented at the UoB i.e. lack of adoption of applications by relevant users due to poor reliability,aesthetics, accessiblity and usability.
 
 
 
@@ -60,7 +72,7 @@ It is proposed that by enhancing web credibility and application security, secur
 One aspect of making a \textit{persuasive} TEL solution, is by enhancing \textit{web credibility}. Web credibility within the context of designing this TEL solution refers to embedding best practice during web development, so as to influence a user's perspective of trustworthiness of the tool itself \cite{Fogg2001,Fogg2002} i.e. making the social network ultimately more persuasive and fit for purpose, by enhancing user perceptions of reliability and trustworthiness of the application \cite{Fogg2001} and effectively improving user acceptance.
 
 
-In view of the project constraints, it is proposed that web credibility for the proposed web application can be achieved by adopting  the \textit{Stanford Guidelines for Web Credibility} \cite{Fogg2002a}. These guidelines are effectively a condensed and easy to follow framework for developing a Web Credible application based on the extensive research carried out by the STPL and associates; effectively aiding web developers to enhance web credibility based on findings of quantitative research as opposed to mere intuition \cite{Fogg2002a,Fogg2002,Fogg1999}.
+In view of the project constraints, it is proposed that web credibility for the proposed web application can be achieved by adopting  the \textit{Stanford Guidelines for Web Credibility} \cite{Fogg2002a}. These guidelines are effectively a condensed and easy to follow framework for developing a Web Credible application based on the extensive research carried out by the STPL and associates; effectively aiding web developers to enhance web credibility based on the findings of quantitative research as opposed to mere intuition \cite{Fogg2002a,Fogg2002,Fogg1999}.
 
 These are listed as follows and briefly explained within the context of developing a web based social network and possible use cases that can be developed:
 
@@ -70,43 +82,42 @@ These are listed as follows and briefly explained within the context of developi
     The recommendation by STPL here is to allow for third party support via citations, references and source material \cite{Fogg2002a}. There are several ways that this can be embedded in the design of the proposed social network. Some proposed design features for the TEL solution that enhance this are :
     \begin{enumerate}
         
-        \item Allow for annotation functionality to a web page via open source JavaScript libraries such as annotatorJS. The idea here is that it allows and encourages users to comment and add third party references to give assurance as to the source of information and it's quality.
-        \item Allow for "likes". "Liking" a post on a social network and perhaps differentiating likes between the type of user e.g. a separate likes for users who are students and users who are instructors/experts, allows the content being portrayed by the social network to be verified or audited by experts and the community alike, from the view point of a user.
-        \item A simple functionality is allowing for an encouraging URL's and relevant rich meta-data to be posted along with corresponding meta-data on the social network's user pages.
+        \item As depicted in Figure \textbf{\ref{fig:UseCaseParticipatory}}, a participatory learning model has been adapted to illustrate the underlying rationale for selecting a social network as an appropriate  modality for the TEL solution. It is envisaged that instructor intervention and scrutiny from the rest of the cohort will make it easy to verify the authenticity of the information. An illustration of a possible case where this can happen is illustrated below:
+        \hl{PLACEHOLDER FOR IMAGE FROM POSTER}
+        \item During the focus group sessions with students in the CS department, it was agreed upon that posting and commenting on a social network are a very desirable and easy way to validate a the authenticity of the post.It was cited that instructor intervention in the form of a comment or like could make the dissemination of learning material more reliable.
     
     \end{enumerate}
     
     \newpage
     \item \textbf{"Show that there's a real organization behind your site"} \cite{Fogg2002a}:
     
-    This recommendation by the STPL can be satisfied by seeking explicit support from the UoB.  Initial introductory meetings with the UoB TEL team have been relatively, positive and it is tentatively believed that some form of association with the UoB will be inevitable if the tool is deployed, thus creating relevant user assurance.
-    
-    Furthermore deliverables such as a user and developer manuals have been proposed, so as to enhance this aspect of web credibility.
+    A significant amount of development effort has been put into creating a wiki for Artemis, an official GitHub  page, relevant readme.md files for context,information about the developer and a bug/user report page. Access to these pages has been made available on every page in Artemis so that the users can see that there is a real and professional organization behind the Artemis project\cite{Fogg2002a}. Access to these features was evaluated and resultant the code was significantly re factored (discussed in detail in later chapters). Whilst default favicons were deprecated in favour of UoB's own logo \cite{UniversityofBristola} to further enhance user perception within this context, it is envisaged that if the tool is deployed in the future on UoB's in house servers this will further enhance this value.
             
     \item \textbf{"Highlight the expertise in your organization and in the content and services you provide."} \cite{Fogg2002a}:
     
-    To conform with this recommendation, it is considered that the salient features of the research based rationale for developing the TEL solution be shared on developer social networks such as GitHub along with it's source code, and be made accessible via the TEL solution as well for non-developers via a mission summary and a link to the project's GitHub page. i.e. user and developer relevant information is to be disseminated as part of this project's proposed deliverables. These shall be clearly accessible from the application's UI.
+   The Artemis Wiki has been used to highlight the accessibility and security features behind Artemis. Furthermore the wiki is used to communicate the pedagogical rationale behind the project. Effectively the wiki summarizes the technical and design features of the project for the benefit of users. Care has been taken to highlight the technicalities of the project so that the users gain assurance within this context.
     
     \item \textbf{"Show that honest and trustworthy people stand behind your site"} \cite{Fogg2002a}:
     
-    STPL recommends showing users that the people behind the web application are \textit{real} \cite{Fogg2002a}. This can be achieved in several ways:
+    STPL recommends showing users that the people behind the web application are \textit{real} \cite{Fogg2002a}. This has been achieved in several ways:
     \begin{enumerate}
         \item Allowing for rich contextual data to be illustrated to the user when viewing other user's profiles i.e. users are able to determine that other profiles on the network either belong to fellow students or expert instructors.
         \item A separate page for biographical information of the developers as recommended by the STPL \cite{Fogg2002a}.
+        \item Making access to developer information and profiles available on all pages.
     \end{enumerate}
     
     \item \textbf{"Make it easy to contact you."} \cite{Fogg2002a}:
-    It is proposed that this can be done by simply adding developer contact details for bug reports, suggested improvements and feedback via the social networks UI. Furthermore similar steps can be taken when disseminating developer and user manuals/related information.
+    
+    This this can and has been done by simply adding developer contact details for bug reports, suggested improvements and feedback via the social networks to the UI i.e. the developers can be contacted via the click of a button in the nav bar of Artemis. Furthermore detailed information is provided in the wiki, read me file on GitHub and via the GitHub Social Developer page.
 
+    \newpage
     \item \textbf{"Design your site so it looks professional (or is appropriate for your purpose)"} \cite{Fogg2002a}:
     
-    STPL recommends that this can be achieved by making evaluating the visual design of a web page, as users make quick evaluations based on visual design alone \cite{Fogg2002a}. It is proposed that this can be done by iteratively carrying out user acceptance tests i.e. by gaining feedback at regular intervals from fellow students and the research supervisor, about the aesthetic features of the TEL solution.
+    As per STPL recommendations, user acceptance testing was carried out to evaluate and refactor Artemis. Whilst during the evaluation process the feedback was largely positive, a log of all issues was kept and all errors/user preferences were accounted for via code refactoring (Collated, identified and explained in a later chapter).
 
     \item \textbf{"Make your site easy to use"} \cite{Fogg2002a}:
     
-    It is proposed that this can be done by simply seeking design inspiration from familiar social networks such as Facebook and Wikipedia, as users are likely to be familiar with the lay out and design of these sort of web applications\cite{Fogg2002a}.
-    
-    Furthermore user accessibility is considered in the following sections of this chapter.
+    It is proposed that this can be done by simply seeking design inspiration from familiar social networks such as Facebook and Wikipedia, as users are likely to be familiar with the lay out and design of these sort of web applications\cite{Fogg2002a}. Furthermore the UI was evaluated and re factored as per user testing to enhance this aspect of user interaction and consideration  for assistive client side technologies such as screen readers or magnifiers was made with the use of ARIA (discussed in a later section of this chapter).
     
     \item \textbf{"Update your site's content often (at least show it's been reviewed recently)."} \cite{Fogg2002a}:
     
