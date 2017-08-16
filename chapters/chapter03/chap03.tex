@@ -4,12 +4,40 @@
 % Description: !!!!!!!!!.
 %
 \let\textcircled=\pgftextcircled
-\chapter{Web Design and Implementation}
-\label{Web Design and Implementation}
+\chapter{Artemis Design and Implementation}
+\label{Artemis Design and Implementation}
+
+\initial{T}his chapter introduces and explains the implementation of Artemis.After introducing the key features identifying the \textit{What?} and the \textit{Why?} aspects of Artemis it delves into the details of the three overriding design values used to inspire development i.e. OER, Captology (Web Credibility), Security and Accessibility.
 
 
-\initial{T}his chapter introduces and outlines the technical technological criteria for development; It pivots via the broad subject area of captology, to identify best practice in enhancing Web Credibility and then Web Application Security. It concludes by considering and explaining User Accessibility and proposed technical mitigation strategies to use during development.
+\section{Development Tools and Languages}
 
+Artemis has been developed using XAMPP-VM so as to use XAMP for Linux within the OS X environment, using the convienience of the OS X hypervisor to emulate a development environment that can be expected of industry standard production \cite{ApacheFriends.org}. Therefore Artemis has been predominantly written in PHP, served by Apache and uses MariaDB as it's SQL database. An alternative NoSQL stack was considered, specifically the MeteorJS full stack, however it was dismissed as being too niche and unsuitable for the OER modality of the tool; a more conventional SQL oriented stack is considered desirable for building a social network as evidenced by the experience of other social network developers \cite{Mei}.
+
+Cross browser compatibility is outside of the scope of this project. However during development and evaluation the product has been used indiscriminately between Google Chrome, Mozilla Firefox (Developer Edition) and Safari. This approach helped target niche vendor specific issues, however it is stressed that complete cross compatibility is beyond the scope of the project and has not been explicitly attempted beyond the general good development practice of using multiple industry leading browsers.
+
+
+
+
+
+
+
+\section{Stakeholder Assessment and Participation}
+
+In an earier sub-section titled  \textit{Three Principle Stakeholders} it was determined that to enable a desirable pedagogy it would be prudent to investigate the primary stakeholders of a flexible pedagogy \cite{Gordon2014}; i.e. the UoB TEL team, CS course instructors and the student cohort are to be considered so as to ensure the successful development, deployment and adoption of the solution. Therefore the primary stakeholders were consulted and involved in the development of Artemis as follows (Please note that the following provide an overview of the of work carried out; specific references towards the work done will be made where relevant):
+\begin{itemize}
+    \item \textbf{TEL Team}: The TELED (Technology Enhanced Learning and Education Development)  department at the University of Bristol has a wide administrative and applied research mandate that broadly seems to straddles procurement, deployment, adoption, training and research associated with TEL solutions at the UoB \cite{UniversityofBristol}. An informal meeting was sought with the TEL team, which resulted in a valuable opportunity to personally discuss the project with the entire team who have a first hand experience of past, present and future TEL projects deployed at the UoB, their development criteria and a demonstrable experience in identifying what leads to failure as opposed to success within the context of TEL solutions deployed at the UoB. It is interesting to note that the TEL team cited lack of instructor adoption, as opposed to student's adopting a technology as equally important to the latter. Indeed the meeting also revealed a declining interest in the use of student forums, which may make a social network a desirable outcome of this project (as the former is viewed as a dated solution).
+    
+    \item \textbf{Teachers}: Feedback from UoB course instructors was sought informally; Primarily from Dr David Bernhard and Dr Ian Holyer. The TELED department had specificallh indicated that there was a lack of instructor interest in TEL solutions at the CS department and this was elaborated upon by the CS instructors interviewed. It was primarily cited that most TEL solutions were not adopted for either or both of the following reasons:
+    \begin{itemize}
+        \item Poor or unreliable functionality.
+        \item Poor or faulty visual aesthetics.
+    \end{itemize}
+    
+    The rationale for lack of adoption cited can be corroborated against the values of \textit{Web Credibility} and persuasive design, which are discussed in greater detail in a later section. The findings of the aforementioned are embedded in the GUI design and also used as the basis of evaluating Artemis and subsequently re factoring it. Instructor values were iterative incorporated by asking for their feedback throughout the life of the project.
+    
+    \item \textbf{Students}: Possibly the most important of the three stakeholders as the majority of the users are expected to be students. UoB CS conversion students and CS undergraduate students were asked for their opinions via a focus group session to generate ideas for possible features to be developed for Artemis; Which generally resulted in requests for a \textit{Facebook-StackOverflow} style social network as opposed to other mainstream social networks. Students were also asked to use the product and test it thoroughly as part of an open ended evaluation (although they were asked to complete a list of prescribed tasks and finish a questionnaire, they were strongly encouraged to use Artemis and explore it. Students were also encouraged to try and break or hack the code to the best of their ability, to see if any bugs could be found. The details of the evaluation form can be found in Appendix I. Users were actively encouraged to try and break or explore Artemis to see if any bugs or edge cases could be discovered. The evaluation was concluded with a questionnaire designed on Web Credibility principles (discussed later). Based on the bugs reported, student feedback and the results of the questionnaire, Artemis's code was re-factored to reflect the necessary changes and make it more relevant for user values.
+\end{itemize}
 
 
 \section{Persuasive Web Design}
@@ -19,6 +47,7 @@ At the core of rationale for embedding  learning models \& methodologies, pedago
 The broad research area of \textit{captology}, by the Stanford Persuasive Technology Lab (STPL) covers the somewhat controversial study of  how computer and applications can be designed to change what people think and do \cite{Fogg2002a,Fogg2002,Fogg2001,Fogg1999}. Whilst extensive research of this area is deemed beyond the constraints of the project, some consideration is given to the constituent factors that improve user acceptance and/or influence; \textit{Web Credibility} and resultantly \textit{Web Application Security} and \textit{User Accessibility}.
 
 It is proposed that by enhancing web credibility and application security, security the TEL solution can be designed in a manner that enhances user acceptance and adoption; Effectively not just making the TEL solution more effective in achieving it's intended purpose, but also avoiding a common cause of failure for TEL solutions implemented at the UoB i.e. lack of adoption of applications by relevant users.
+
 
 
 
