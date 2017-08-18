@@ -95,43 +95,65 @@ These are listed as follows and briefly explained within the context of developi
     A significant amount of development effort has been put into creating documentation for Artemis. Whilst the documentation has a wide and varied scope or purpose, it is essential to note that it indicates towards the existence of a professional team behind the project. A list of the documentation made readily accessible to Artemis users (i.e. always available in the application) is as follows:
     
     \begin{itemize}
-        \item A wiki page for Artemis so that users can find details about the project, underlying rationale, the programme specifications, legal modalities and information about the developers.
+    
+        \item A \textbf{Wiki page} for Artemis so that users can find details about the project, underlying rationale, the programme specifications, legal modalities and information about the developers.
             \begin{figure}[H]
                 \centering{ \includegraphics[scale=0.36]{chapters/chapter03/figures/Wiki.png}}
+                \label{wiki}
                 \caption{Artemis Wiki page. Available at: \url{https://github.com/TaimurAhmed/summerProject2017/wiki}}
             \end{figure}
-        \item A user feedback and bug reporting page on GitHub to report issues or feedback for Artemis.
-        \item A developer page giving details about the people who developed Artemis.
-        \item A ReadMe markdown file on GitHub for other developers.
+            
+        \item A \textbf{User Feedback and Bug Reporting page} on GitHub to so that users may report bugs and track issues. It also provides developers with a forum to discuss details of bugs, give feedback and reports as depicted in the following figure.
+            \begin{figure}[H]
+                \centering{ \includegraphics[scale=0.36]{chapters/chapter03/figures/bug.png}}
+                \caption{Artemis Bug Report and Issue Tracking Page. Available at: \url{https://github.com/TaimurAhmed/summerProject2017/issues}}
+            \end{figure}
+        
+        \newpage
+        
+        \item A \textbf{Developer Profile page} has been linked to the Wiki and can be accessed through the navbar.
+            \begin{figure}[H]
+                \centering{ \includegraphics[scale=0.36]{chapters/chapter03/figures/profile.png}}
+                \label{developer}
+                \caption{Developer Profile Page with contact details. Available at: \url{https://github.com/TaimurAhmed}}
+            \end{figure}
+        
+        \item A \textbf{ReadMe markdown file} on GitHub for other developers. This is standard practice in most Open Source projects that want other developers to be able to understand and work on the project.
+            \begin{figure}[H]
+                \centering{ \includegraphics[scale=0.36]{chapters/chapter03/figures/readMe.png}}
+                \caption{ReadMe Markdown File for Developers. Available at: \url{https://github.com/TaimurAhmed/summerProject2017}}
+            \end{figure}
     \end{itemize}
     
-    Whilst default favicons were deprecated in favour of UoB's own logo \cite{UniversityofBristola} to further enhance user perception within this context, it is envisaged that if the tool is deployed in the future on UoB's in house servers this will further enhance this value.
-            
+    Furthermore UoB's offical favicons have been used (freely disseminated \cite{UniversityofBristola} and other default favicons were deprecated in favour of UoB's own logo \cite{UniversityofBristola} to further enhance user perception of a real organization. It is envisaged that if the tool is deployed in the future on UoB's in house servers this will further enhance this value as it will likely be disseminated via the organizations own web portal, giving users greater assurance within the relevant context (albeit Artemis is likely to have it's own domain name).
+
+
+    \newpage    
     \item \textbf{"Highlight the expertise in your organization and in the content and services you provide."} \cite{Fogg2002a}:
     
-   The Artemis Wiki has been used to highlight the accessibility and security features behind Artemis. Furthermore the wiki is used to communicate the pedagogical rationale behind the project. Effectively the wiki summarizes the technical and design features of the project for the benefit of users. Care has been taken to highlight the technicalities of the project so that the users gain assurance within this context.
-    
+   
+   The Artemis Wiki as shown in the figure on \textbf{page \pageref{wiki}} has been used to highlight the technical aspects of Artemis e.g. the accessibility and security features behind Artemis. Furthermore the wiki is used to communicate the pedagogical rationale behind the project i.e. the design aspects and use cases. Effectively the wiki summarizes the technical and design features of the project for the benefit of users, so as to provide assurance in the expertise behind the project.
+   
     \item \textbf{"Show that honest and trustworthy people stand behind your site"} \cite{Fogg2002a}:
     
     STPL recommends showing users that the people behind the web application are \textit{real} \cite{Fogg2002a}. This has been achieved in several ways:
     \begin{enumerate}
         \item Allowing for rich contextual data to be illustrated to the user when viewing other user's profiles i.e. users are able to determine that other profiles on the network either belong to fellow students or expert instructors.
-        \item A separate page for biographical information of the developers as recommended by the STPL \cite{Fogg2002a}.
+        \item A separate page for biographical information of the developers as recommended by the STPL \cite{Fogg2002a} and illustrated on \textbf{page \pageref{developer}}.
         \item Making access to developer information and profiles available on all pages.
     \end{enumerate}
     
     \item \textbf{"Make it easy to contact you."} \cite{Fogg2002a}:
     
-    This this can and has been done by simply adding developer contact details for bug reports, suggested improvements and feedback via the social networks to the UI i.e. the developers can be contacted via the click of a button in the nav bar of Artemis. Furthermore detailed information is provided in the wiki, read me file on GitHub and via the GitHub Social Developer page.
+    This this can and has been done by simply adding developer contact details for bug reports, suggested improvements and feedback via the social networks to the UI i.e. the developers can be contacted via the click of a button in the nav bar of Artemis, which is accesible on every page. Furthermore detailed information is provided in the Wiki, ReadMe markdown, Bug and Error reporting page and developer's personal page to make it easy for users to contact the developer.
 
-    \newpage
     \item \textbf{"Design your site so it looks professional (or is appropriate for your purpose)"} \cite{Fogg2002a}:
     
-    As per STPL recommendations, user acceptance testing was carried out to evaluate and refactor Artemis. Whilst during the evaluation process the feedback was largely positive, a log of all issues was kept and all errors/user preferences were accounted for via code refactoring (Collated, identified and explained in a later chapter).
+    As per STPL recommendations, user acceptance testing was carried out to rigorously evaluate and subsequently refactor Artemis. Whilst during the evaluation process the feedback was largely positive, a log of all issues was kept and all errors/user preferences were accounted for via code refactoring (Collated, identified and explained in a later chapter).
 
     \item \textbf{"Make your site easy to use"} \cite{Fogg2002a}:
     
-    It is proposed that this can be done by simply seeking design inspiration from familiar social networks such as Facebook and Wikipedia, as users are likely to be familiar with the lay out and design of these sort of web applications\cite{Fogg2002a}. Furthermore the UI was evaluated and re factored as per user testing to enhance this aspect of user interaction and consideration  for assistive client side technologies such as screen readers or magnifiers was made with the use of ARIA (discussed in a later section of this chapter).
+    It was proposed during the focus group meeting with students that this can be done by simply seeking design inspiration from familiar social networks such as Facebook and Wikipedia, as users are likely to be familiar with the lay out and design of these sort of web applications\cite{Fogg2002a}. Furthermore the UI was evaluated and refactored as per user testing to enhance this aspect of user interaction and consideration  for assistive client side technologies such as screen readers or magnifiers was made with the use of ARIA (discussed in a later section of this chapter).
     
     \item \textbf{"Update your site's content often (at least show it's been reviewed recently)."} \cite{Fogg2002a}:
     
@@ -143,7 +165,7 @@ These are listed as follows and briefly explained within the context of developi
     
     \item \textbf{"Avoid errors of all types, no matter how small they seem."} \cite{Fogg2002a}:
     
-    Once again this can be sifted out during development via user acceptance testing and after deployment by allowing for active bug reports. Constant review of the web applications static content during development should mitigate this risk as well.
+    Once again these were sifted, logged and subsequently corrected via user evaluation, testing and refactoring. These have been collated and will be identified and discussed in a later chapter.
 \end{enumerate}
 \newpage
 
