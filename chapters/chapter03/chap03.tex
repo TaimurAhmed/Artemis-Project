@@ -28,7 +28,7 @@ In an earier sub-section titled  \textit{Three Principle Stakeholders} it was de
 \begin{itemize}
     \item \textbf{TEL Team}: The TELED (Technology Enhanced Learning and Education Development)  department at the University of Bristol has a wide administrative and applied research mandate that broadly seems to straddles procurement, deployment, adoption, training and research associated with TEL solutions at the UoB \cite{UniversityofBristol}. An informal meeting was sought with the TEL team, which resulted in a valuable opportunity to personally discuss the project with the entire team who have a first hand experience of past, present and future TEL projects deployed at the UoB, their development criteria and a demonstrable experience in identifying what leads to failure as opposed to success within the context of TEL solutions deployed at the UoB. It is interesting to note that the TEL team cited lack of instructor adoption, as opposed to student's adopting a technology as equally important to the latter. Indeed the meeting also revealed a declining interest in the use of student forums, which may make a social network a desirable outcome of this project (as the former is viewed as a dated solution).
     
-    \item \textbf{Teachers}: Feedback from UoB course instructors was sought informally; Primarily from Dr David Bernhard and Dr Ian Holyer. The TELED department had specificallh indicated that there was a lack of instructor interest in TEL solutions at the CS department and this was elaborated upon by the CS instructors interviewed. It was primarily cited that most TEL solutions were not adopted for either or both of the following reasons:
+    \item \textbf{Teachers}: Feedback from UoB course instructors was sought informally; Primarily from Dr David Bernhard and Dr Ian Holyer. The TELED department had specifically indicated that there was a lack of instructor interest in TEL solutions at the CS department and this was elaborated upon by the CS instructors interviewed. It was primarily cited that most TEL solutions were not adopted for either or both of the following reasons:
     \begin{itemize}
         \item Poor or unreliable functionality.
         \item Poor or faulty visual aesthetics.
@@ -79,19 +79,33 @@ These are listed as follows and briefly explained within the context of developi
 \begin{enumerate}
     \item \textbf{"Make it easy to verify the accuracy of the information on your site ?"} \cite{Fogg2002a}:
     
-    The recommendation by STPL here is to allow for third party support via citations, references and source material \cite{Fogg2002a}. There are several ways that this can be embedded in the design of the proposed social network. Some proposed design features for the TEL solution that enhance this are :
+    The recommendation by STPL here is to allow for third party assurances such as citations, references and source material \cite{Fogg2002a}. There are several ways that this can be embedded in the design of a proposed social network. This was implemented and embedded in Artemis as follows:
     \begin{enumerate}
         
         \item As depicted in Figure \textbf{\ref{fig:UseCaseParticipatory}}, a participatory learning model has been adapted to illustrate the underlying rationale for selecting a social network as an appropriate  modality for the TEL solution. It is envisaged that instructor intervention and scrutiny from the rest of the cohort will make it easy to verify the authenticity of the information. An illustration of a possible case where this can happen is illustrated below:
-        \hl{PLACEHOLDER FOR IMAGE FROM POSTER}
-        \item During the focus group sessions with students in the CS department, it was agreed upon that posting and commenting on a social network are a very desirable and easy way to validate a the authenticity of the post.It was cited that instructor intervention in the form of a comment or like could make the dissemination of learning material more reliable.
+    
+        \hl{Add image here later}
+        \item This possible use case (illustrated in previous figure) was proposed during the focus group as well and the likelihood corroborated via course instructors. It was agreed upon by consensus that it is a reasonable assertion that when material is shared on Artemis it can easily be verified by other students, course instructors or teaching assistants via post \textit{likes} and \textit{comments}.
     
     \end{enumerate}
     
     \newpage
     \item \textbf{"Show that there's a real organization behind your site"} \cite{Fogg2002a}:
     
-    A significant amount of development effort has been put into creating a wiki for Artemis, an official GitHub  page, relevant readme.md files for context,information about the developer and a bug/user report page. Access to these pages has been made available on every page in Artemis so that the users can see that there is a real and professional organization behind the Artemis project\cite{Fogg2002a}. Access to these features was evaluated and resultant the code was significantly re factored (discussed in detail in later chapters). Whilst default favicons were deprecated in favour of UoB's own logo \cite{UniversityofBristola} to further enhance user perception within this context, it is envisaged that if the tool is deployed in the future on UoB's in house servers this will further enhance this value.
+    A significant amount of development effort has been put into creating documentation for Artemis. Whilst the documentation has a wide and varied scope or purpose, it is essential to note that it indicates towards the existence of a professional team behind the project. A list of the documentation made readily accessible to Artemis users (i.e. always available in the application) is as follows:
+    
+    \begin{itemize}
+        \item A wiki page for Artemis so that users can find details about the project, underlying rationale, the programme specifications, legal modalities and information about the developers.
+            \begin{figure}[H]
+                \centering{ \includegraphics[scale=0.36]{chapters/chapter03/figures/Wiki.png}}
+                \caption{Artemis Wiki page. Available at: \url{https://github.com/TaimurAhmed/summerProject2017/wiki}}
+            \end{figure}
+        \item A user feedback and bug reporting page on GitHub to report issues or feedback for Artemis.
+        \item A developer page giving details about the people who developed Artemis.
+        \item A ReadMe markdown file on GitHub for other developers.
+    \end{itemize}
+    
+    Whilst default favicons were deprecated in favour of UoB's own logo \cite{UniversityofBristola} to further enhance user perception within this context, it is envisaged that if the tool is deployed in the future on UoB's in house servers this will further enhance this value.
             
     \item \textbf{"Highlight the expertise in your organization and in the content and services you provide."} \cite{Fogg2002a}:
     
@@ -121,11 +135,11 @@ These are listed as follows and briefly explained within the context of developi
     
     \item \textbf{"Update your site's content often (at least show it's been reviewed recently)."} \cite{Fogg2002a}:
     
-    This should not be a problem within the context of a Web 2.0 application as the content is generated by users themselves and contributions from the developer are unlikely to be frequently required.
+    This should not be a problem within the context of a Web 2.0 application as the content is generated by users themselves and contributions from the developer are unlikely to be frequently required. However relevant disclosures for updates will be made via GitHub pages which are easily accessed from Artemis's UI.
     
     \item \textbf{"Use restraint with any promotional content."} \cite{Fogg2002a}:
     
-    As this is not a commercial venture, it is proposed that this can be avoided by banning the use of promotional ad content altogether during the development of the project.
+    As this was not a commercial venture, this aspect of enhancign Web Credibility is easily addressed by using no promotional content.
     
     \item \textbf{"Avoid errors of all types, no matter how small they seem."} \cite{Fogg2002a}:
     
@@ -142,7 +156,7 @@ With the transition of the world wide web from web-sites to web applications, i.
 
 An extensive review of web application security is desirable but beyond the reasonable constraints of this project. Therefore  utilising the \textit{Open Web Application Security Project (OWASP) Top 10} \cite{OWASP2017} for identifying common or important design vulnerabilities and mitigating them will be used during development, as a viable alternative achievable within the constraints of the project.
 
-The Open Web Application Security Project is an online community  and  a respected  not for profit organisation which creates free to use articles, methodologies, documentation, tools, and technologies towards the benefit of web application security \cite{OWASP}. The organisation  annually releases research that identifies and underlines mitigation strategies for the \textit{"Ten Most Critical Web Application Security Risks"}\cite{OWASP2017} identified threat agents within the scope of qualitative benchmarks i.e. possible attack vectors, the prevalence and detectability of security vulnerabilities, the technical implications and the commercial/business implications.
+The Open Web Application Security Project is an online community  and  a respected  not-for-profit organisation which creates free to use articles, methodologies, documentation, tools, and technologies towards the benefit of web application security \cite{OWASP}. The organisation  annually releases research that identifies and underlines mitigation strategies for the \textit{"Ten Most Critical Web Application Security Risks"}\cite{OWASP2017} identified threat agents within the scope of qualitative benchmarks i.e. possible attack vectors, the prevalence and detectability of security vulnerabilities, the technical implications and the commercial/business implications.
 
 The rationale behind these qualitative benchmarks to assist the quantification and ranking of security risks,  is illustrated as via the help of the following diagram:
 
