@@ -46,7 +46,11 @@ In an earier sub-section titled  \textit{Three Principle Stakeholders} it was de
         
         \item \textbf{Focus Group}: An arbitrary group of people from the MSc and BSc Computer Science cohort were asked to participate in a brain storming session to help generate creative ideas for the proposed social  network. The underlying purpose was to generate creative ideas,use cases and possible modalities. The overarching outcome of this exercises was that there was a desire for a Facebook-StackoverFlow styled hybrid social network, as opposed to other mainstream social networks such as Twitter or Reddit(As corroborated by the TELED department,most students expressed a distaste for the relatively \textit{old fashioned} forums currently used at the UoB, which have an interface similar in substance to Reddit).
 
-        \item \textbf{Open Ended Evaluation and Refactoring}:  An arbitrary group of ten people from the MSc and BSc Computer Science cohort were asked to participate in an Open Ended Evaluation. As part of the  evaluation participants were asked to perform a series of use cases to thoroughly test Artemis and assess the \textit{Web Credibility} values it is supposed to adhere too. Additionally users were strongly encouraged to explore, break,test and hack Artemis to the best of their abilities. The questionnaire which was designed to evaluate Web Credibility yielded significant feedback relevant tot he GUI and a bug report/user requests list was also generated as a result of the exercises. This feedback was used to refactor Artemis as per user values and design areas that were lacking in quality; Further details are provided later in this report.
+        \item \textbf{Open Ended Evaluation and Refactoring}:  A group of ten people from the MSc and BSc Computer Science cohort were asked to participate in an Open Ended Evaluation (Appendix A1). The purpose of this evaluation was to assess and improve the Web Credibility of the Artemis UI and UX  and find any bugs or anomalies in the code. The results were subsequently used to refactor the source code and improve the UI (thus enhancing the underlying rationale of making it a \textit{Persuasive Technology} as discussed under the section in the chapter titled \textit{Persuasive Web Design}).
+        
+        As part of the  evaluation participants were asked to perform a series of use cases. The purpose of this step was to encourage the rigorous evaluation of all feature of Artemis. However users were also strongly encouraged to explore Artemis and try to maliciously break or damage the program (so as to cover use cases that might not have been envisioned). Furthermore users were required to test the application \textbf{unassisted} and without intervention, as is reasonably possible.
+        
+        The approach yielded thorough feedback and bugs in Artemis. Therefore the code was subsequently refactored and improvements to the User Interface were made. These have been identified and discussed in the chapter on evaluation.
         
         
     \end{itemize}
@@ -60,7 +64,7 @@ At the core of a rationale for embedding  learning models \& methodologies, peda
 
 The broad research area of \textit{captology}, by the Stanford Persuasive Technology Lab (STPL) covers the somewhat controversial study of  how computer and applications can be designed to change what people think and do \cite{Fogg2002a,Fogg2002,Fogg2001,Fogg1999}. Whilst extensive research of this area is deemed beyond the constraints of the project, some consideration is given to the constituent factors that improve user acceptance and/or influence; \textit{Web Credibility} and resultantly \textit{Web Application Security} and \textit{User Accessibility}.
 
-It is proposed that by enhancing web credibility and application security, security the TEL solution can be designed in a manner that enhances user acceptance and adoption; Effectively not just making the TEL solution more effective in achieving it's intended purpose, but also avoiding a common cause of failure for TEL solutions implemented at the UoB i.e. lack of adoption of applications by relevant users due to poor reliability,aesthetics, accessiblity and usability.
+It is proposed that by enhancing web credibility and application security, security the TEL solution can be designed in a manner that enhances user acceptance and adoption; Effectively not just making the TEL solution more effective in achieving it's intended purpose, but also avoiding a common  underlying cause of failure for TEL solutions implemented at the UoB i.e. lack of adoption of applications by relevant users due to poor reliability,aesthetics, accessibility and usability. Indeed the underlying cause of failure was corroborated by instructors in the CS department who did not use certain TEL solutions available to them due to broken functionality or poor aesthetics i.e. Core issues against which the STPL advises so as to increase an application's \textit{Credibility} \cite{Fogg2002a,Fogg2002,Fogg2001,Fogg1999} and enhance application adoption or usage.
 
 
 
@@ -71,12 +75,12 @@ It is proposed that by enhancing web credibility and application security, secur
 
 \subsection{Web Credibility}
 
-One aspect of making a \textit{persuasive} TEL solution, is by enhancing \textit{web credibility}. Web credibility within the context of designing this TEL solution refers to embedding best practice during web development, so as to influence a user's perspective of trustworthiness of the tool itself \cite{Fogg2001,Fogg2002} i.e. making the social network ultimately more persuasive and fit for purpose, by enhancing user perceptions of reliability and trustworthiness of the application \cite{Fogg2001} and effectively improving user acceptance.
+One aspect of making a \textit{persuasive} TEL solution, is by enhancing \textit{web credibility}. Web credibility within the context of designing this TEL solution refers to embedding best practice within web design, so as to influence a user's perspective of trustworthiness of the tool itself \cite{Fogg2001,Fogg2002} i.e. making the social network ultimately more persuasive and fit for purpose, by improving user perceptions of reliability and trustworthiness of the application \cite{Fogg2001} and effectively improving user acceptance.
 
 
 In view of the project constraints, it is proposed that web credibility for the proposed web application can be achieved by adopting  the \textit{Stanford Guidelines for Web Credibility} \cite{Fogg2002a}. These guidelines are effectively a condensed and easy to follow framework for developing a Web Credible application based on the extensive research carried out by the STPL and associates; effectively aiding web developers to enhance web credibility based on the findings of quantitative research as opposed to mere intuition \cite{Fogg2002a,Fogg2002,Fogg1999}.
 
-These are listed as follows and briefly explained within the context of developing a web based social network and possible use cases that can be developed:
+These are listed as follows and briefly explained within the context of developing Artemis  and it's use cases:
 
 \begin{enumerate}
     \item \textbf{"Make it easy to verify the accuracy of the information on your site ?"} \cite{Fogg2002a}:
@@ -84,10 +88,16 @@ These are listed as follows and briefly explained within the context of developi
     The recommendation by STPL here is to allow for third party assurances such as citations, references and source material \cite{Fogg2002a}. There are several ways that this can be embedded in the design of a proposed social network. This was implemented and embedded in Artemis as follows:
     \begin{enumerate}
         
-        \item As depicted in \textbf{Figure \ref{fig:UseCaseParticipatory}}, a participatory learning model has been adapted to illustrate the underlying rationale for selecting a social network as an appropriate  modality for the TEL solution. It is envisaged that instructor intervention and scrutiny from the rest of the cohort will make it easy to verify the authenticity of the information. An illustration of a possible case where this can happen is illustrated below:
-    
-        \hl{Add image here later}
-        \item This possible use case (illustrated in previous figure) was proposed during the focus group as well and the likelihood corroborated via course instructors. It was agreed upon by consensus that it is a reasonable assertion that when material is shared on Artemis it can easily be verified by other students, course instructors or teaching assistants via post \textit{likes} and \textit{comments}.
+        \item As illustrated in a previous use case in \textbf{Figure \ref{fig:UseCaseParticipatory}}, a participatory learning model has been adapted to illustrate the underlying rationale for selecting a social network as an appropriate  modality for the TEL solution. It is envisaged that instructor intervention and scrutiny from the rest of the cohort will make it easy to verify the authenticity of the information. An illustration of a possible case where this can happen is illustrated below:
+            
+        \begin{figure}[H]
+        	\centering
+        	\includegraphics[scale=0.45,right]{chapters/chapter03/figures/comment.png}
+        	\mycaption[Illustration of  Use Case, depicting possible adaptation of Participatory Learning Model to Proposed Social Network]{Illustration of  Use Case, depicting possible adaptation of Participatory Learning Model to Proposed Social Network}
+        	\label{fig:UseCaseParticipatory}
+        \end{figure}
+        
+        This possible use case (illustrated in previous figure) was also proposed during the focus group as well and the likelihood of it instructor intervention corroborated via course instructors. It was agreed upon by consensus that it is a reasonable assertion that when material is shared on Artemis it can easily be verified by other students, course instructors or teaching assistants via post \textit{likes} and \textit{comments}.
     
     \end{enumerate}
     
@@ -134,11 +144,13 @@ These are listed as follows and briefly explained within the context of developi
     \item \textbf{"Highlight the expertise in your organization and in the content and services you provide."} \cite{Fogg2002a}:
     
    
-   The Artemis Wiki as shown in the figure on \textbf{page \pageref{wiki}} has been used to highlight the technical aspects of Artemis e.g. the accessibility and security features behind Artemis. Furthermore the wiki is used to communicate the pedagogical rationale behind the project i.e. the design aspects and use cases. Effectively the wiki summarizes the technical and design features of the project for the benefit of users, so as to provide assurance in the expertise behind the project.
+   The Artemis Wiki as shown in the figure on \textbf{page \pageref{wiki}} has been used to highlight the technical aspects of Artemis e.g. the accessibility and security features behind Artemis via the content of the application. Furthermore the wiki is used to communicate the pedagogical rationale behind the project i.e. the design aspects and use cases. Effectively the wiki summarizes the technical and design features of the project for the benefit of users, so as to provide assurance in the expertise behind the project.
+   
+   The developer page which can also be accessed via Artemis can be used to highlight the expertise behind Artemis (ideally at the time of deployment an experienced team of developers will maintain the application and can reuse these links).
    
     \item \textbf{"Show that honest and trustworthy people stand behind your site"} \cite{Fogg2002a}:
     
-    STPL recommends showing users that the people behind the web application are \textit{real} \cite{Fogg2002a}. This has been achieved in several ways:
+    STPL recommends showing users that the people behind the web application are \textit{real} \cite{Fogg2002a}. This has been implemented in Artemis as follows:
     \begin{enumerate}
         \item Allowing for rich contextual data to be illustrated to the user when viewing other user's profiles i.e. users are able to determine that other profiles on the network either belong to fellow students or expert instructors.
         \item A separate page for biographical information of the developers as recommended by the STPL \cite{Fogg2002a} and illustrated on \textbf{page \pageref{developer}}.
@@ -147,42 +159,43 @@ These are listed as follows and briefly explained within the context of developi
     
     \item \textbf{"Make it easy to contact you."} \cite{Fogg2002a}:
     
-    This this can and has been done by simply adding developer contact details for bug reports, suggested improvements and feedback via the social networks to the UI i.e. the developers can be contacted via the click of a button in the nav bar of Artemis, which is accesible on every page. Furthermore detailed information is provided in the Wiki, ReadMe markdown, Bug and Error reporting page and developer's personal page to make it easy for users to contact the developer.
+    This this can and has been done by simply adding developer contact details for bug reports, suggested improvements and feedback via the social networks to the UI i.e. the developers can be contacted via the click of a button in the nav bar of Artemis, which is accessible on every page of Artemis at all times. Furthermore detailed information is provided in the Wiki, ReadMe markdown, Bug and Error reporting page and developer's personal page to make it easy for users to contact the developer and learn more about the application.
 
     \item \textbf{"Design your site so it looks professional (or is appropriate for your purpose)"} \cite{Fogg2002a}:
     
-    As per STPL recommendations, user acceptance testing was carried out to rigorously evaluate and subsequently refactor Artemis. Whilst during the evaluation process the feedback was largely positive, a log of all issues was kept and all errors/user preferences were accounted for via code refactoring (Collated, identified and explained in a later chapter).
+    As recommended by STPL and implemented in this project , user acceptance testing was carried out to rigorously evaluate and subsequently refactor Artemis. User testers were intentionally encouraged to explore the application,  maliciously try to break it and undergo a series of Use Cases (See Appendix A1) unassisted. Whilst during the evaluation process the feedback was largely positive, a log of all issues was kept and all errors/user preferences were accounted for via code refactoring (Collated, identified and explained in a later chapter).
 
     \item \textbf{"Make your site easy to use"} \cite{Fogg2002a}:
     
-    It was proposed during the focus group meeting with students that this can be done by simply seeking design inspiration from familiar social networks such as Facebook and Wikipedia, as users are likely to be familiar with the lay out and design of these sort of web applications\cite{Fogg2002a}. Furthermore the UI was evaluated and refactored as per user testing to enhance this aspect of user interaction and consideration  for assistive client side technologies such as screen readers or magnifiers was made with the use of ARIA (discussed in a later section of this chapter).
+    It was proposed during the focus group meeting with students that this can be done by seeking design inspiration from familiar social networks such as Facebook and Wikipedia, as users are likely to be familiar with the lay out and design of these sort of web applications\cite{Fogg2002a}. Furthermore the UI was evaluated and refactored as per user testing to enhance this aspect of user interaction and consideration  for assistive client side technologies such as screen readers or magnifiers was made with the use of ARIA (discussed in a later section of this chapter).
     
     \item \textbf{"Update your site's content often (at least show it's been reviewed recently)."} \cite{Fogg2002a}:
     
-    This should not be a problem within the context of a Web 2.0 application as the content is generated by users themselves and contributions from the developer are unlikely to be frequently required. However relevant disclosures for updates will be made via GitHub pages which are easily accessed from Artemis's UI.
+    Within the context of a Web 2.0 application that generates dynamically generated content contributed by the users, this should not necessarily be a problem. However after deployment the developer documentation that has been set up i.e. Wiki, Markdown file, Developer Page and Bug/Issue Report page, the relevant aspect of the project can be used to regularly update clients on recent releases and updates. This aspect is likely to be of more relevance after deployment and can only be anticipated preemptively. For the most part reasonable implementation is beyond the constraints of the project.
     
     \item \textbf{"Use restraint with any promotional content."} \cite{Fogg2002a}:
     
-    As this was not a commercial venture, this aspect of enhancing Web Credibility is easily addressed by using no promotional content.
+    As Artemis is not a commercial venture, this aspect of enhancing Web Credibility is easily addressed by using no promotional content.
     
     \item \textbf{"Avoid errors of all types, no matter how small they seem."} \cite{Fogg2002a}:
     
-    Once again these were sifted, logged and subsequently corrected via user evaluation, testing and refactoring. These have been collated and will be identified and discussed in a later chapter.
+    The user evaluation testing was carried out without developer intervention and user testers were strongly encouraged to try and maliciously break and rigorously hack the program. This yielded valuable feedback used to refactor the code and will be discussed in a later chapter on evaluation and refactoring.
+    
 \end{enumerate}
 \newpage
 
 
 \section{Web Application Security}
 
-With the transition of the world wide web from web-sites to web applications, i.e. the transition towards Web 2.0, a new host of security vulnerabilities moving away from traditional server side vulnerabilities towards new vectors such as client side have arisen \cite{Dayfdd2011}. Given the underlying importance of addressing common Web Application Security vulnerabilities \cite{Dayfdd2011} and it's negative impact on areas including but not limited to web credibility \cite{Fogg2002a,Fogg1999} that can affect the overall success and efficacy of the tool and even harm the users, this issue must be addressed for Artemis.
+With the transition of the world wide web from web-sites to web applications, i.e. the transition towards Web 2.0, a new host of security vulnerabilities moving away from traditional server side vulnerabilities towards new vectors such as vectors originating from client side have arisen \cite{Dayfdd2011}. Given the underlying importance of addressing common Web Application Security vulnerabilities \cite{Dayfdd2011} and it's negative impact on areas including but not limited to web credibility \cite{Fogg2002a,Fogg1999} that can affect the overall success and efficacy of the tool and even harm the users, this issue must be addressed for Artemis.
 
 \subsection{OWASP}
 
-An extensive review of web application security is desirable but beyond the reasonable constraints of this project. Therefore  utilising the \textit{Open Web Application Security Project (OWASP) Top 10} \cite{OWASP2017} for identifying common or important design vulnerabilities and mitigating them will be used during development, as a viable alternative achievable within the constraints of the project.
+An extensive review of web application security is desirable but beyond the reasonable constraints of this project. Therefore  utilising the \textit{Open Web Application Security Project (OWASP) Top 10} \cite{OWASP2017} for identifying common or important design vulnerabilities and mitigating them was  used during development, as a viable alternative achievable within the constraints of the project.
 
 The Open Web Application Security Project is an online community  and  a respected  not-for-profit organisation which creates free to use articles, methodologies, documentation, tools, and technologies towards the benefit of web application security \cite{OWASP}. The organisation  annually releases research that identifies and underlines mitigation strategies for the \textit{"Ten Most Critical Web Application Security Risks"}\cite{OWASP2017} identified threat agents within the scope of qualitative benchmarks i.e. possible attack vectors, the prevalence and detectability of security vulnerabilities, the technical implications and the commercial/business implications.
 
-The rationale behind these qualitative benchmarks to assist the quantification and ranking of security risks,  is illustrated as via the help of the following diagram:
+The rationale behind these qualitative benchmarks to assist the quantification and ranking of security risks,  is illustrated as via the help of the following diagram which breaks a security vulnerability down into stages for classification and consideration:
 
 % A single figure
 \begin{figure}[H]
@@ -192,7 +205,7 @@ The rationale behind these qualitative benchmarks to assist the quantification a
 	\label{fig:Consideration of Threat Agents}
 \end{figure}
 
-The OWASP foundation reasons \cite{OWASP2017} that attackers or threat agents can exploit various modes of attack or \textit{attack vectors}, based on \textit{prevalence} and ease of \textit{detecting security weaknesses} (vulnerabilities) that can have a negative impact  within a generic technical or application specific commercial context \cite{OWASP2017}. Apart from application specific implications, the rest of these benchmarks can be classified based on the severity; which results in classification for the purpose of ranking the OWASP Top 10 vulnerabilities:
+The OWASP foundation reasons \cite{OWASP2017} that attackers or threat agents can exploit various modes of attack or \textit{attack vectors}, based on \textit{prevalence} and ease of \textit{detecting security weaknesses}/vulerabilities that can have a negative impact  within a generic technical or application specific commercial context \cite{OWASP2017}. Apart from application specific implications, the rest of these benchmarks can be classified based on the severity; which results in classification for the purpose of ranking the OWASP Top 10 vulnerabilities:
 
 % A single figure
 \begin{figure}[H]
@@ -202,7 +215,7 @@ The OWASP foundation reasons \cite{OWASP2017} that attackers or threat agents ca
 	\label{fig:OWASP Risk Rating Methodology}
 \end{figure}
 
-Finally the risk rating methodology is used to compile an annual list of the most common, detectable and damaging security threats, along with mitigation strategies \cite{OWASP2017}. The proposed OWASP Top 10 for 2017, is effectively a mitigation strategy for this project that considers likelihood and impact. Likelihood and impact seem to be a reasonable approach to security within the context of this project, as predicting attack vectors for every eventuality is not just futile but also undoubtedly unfeasible. Therefore within the context of the following attack vectors, Artemis has mitigated the risk as follows:
+Finally the risk rating methodology is used to compile an annual list of the most common, detectable and damaging security threats, along with mitigation strategies \cite{OWASP2017}. The proposed OWASP Top 10 for 2017, is effectively a mitigation strategy for this project that considers the likelihood and impact of security vulnerabilities. This seems to be a reasonable approach to security within the context of this project, as predicting attack vectors for every eventuality is not just futile but also undoubtedly unfeasible. Therefore within the context of the following attack vectors, Artemis has mitigated the risk as follows:
 
 \begin{enumerate}
     \item \textbf{Injection}:
@@ -216,7 +229,9 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     	\label{injection}
     \end{figure}
     
-    The most common cause of code injection i.e. SQL injection has been easily dealt with via the use of prepared statements to interact with the MariaDB in Artemis; otherwise known as a parameterised statement, a prepared statement is used to execute the same statement repeatedly with high efficiency and prevent SQL injection as per the PHP API\cite{PHP}. The use of prepared statements eliminates the possibility of SQL injection and avoid the pitfalls of relying on \textit{Escaping Strategy} (albiet as an extra layer of security Artemis does use PHP's native MySQLi escape methods, despite not actually being necessary in lieu of prepared statements), which can be notoriously hard to implement perfectly. To completely mitigate this attack vector all user input is also sanitized via PHP's native \textit{strip\_tags} function, which sanitizes all PHP and HTML code into ordinary strings. Effectively the relevant interpreters have been insulated from user injected code and this risk has been mitigated in Artemis.
+    The most common cause of code injection i.e. SQL injection has been easily dealt with via the use of prepared statements to interact with the MariaDB in Artemis; otherwise known as a parameterised statement, a prepared statement is used to execute the same statement repeatedly with high efficiency and prevent SQL injection as per the PHP API\cite{PHP}. The use of prepared statements eliminates the possibility of SQL injection and avoid the pitfalls of relying on \textit{Escaping Strategy} (albiet as an extra layer of security Artemis does use PHP's native MySQLi escape methods, despite not actually being necessary in lieu of prepared statements), which can be notoriously hard to implement perfectly.
+    
+    To completely mitigate this attack vector all user input is  sanitized via PHP's native \textit{strip\_tags} function. As per the PHP manual this sanitizes all PHP and HTML code into ordinary strings . Effectively the relevant interpreters have been insulated from user injected code and this risk has been mitigated in Artemis.
     
     \begin{figure}[h]
     	\centering
