@@ -220,8 +220,6 @@ Finally the risk rating methodology is used to compile an annual list of the mos
 \begin{enumerate}
     \item \textbf{Injection}:
     
-    Injection vulnerabilities (particularly SQL injections) are the top vulnerability on the OWASP list \cite{OWASP2017}. As the figure below illustrates, it is an easily exploitable attack vector (as it is text based) and exploits interpretor syntax and can have a severe impact on an application e.g. MariaDB could be exploited by truncating all stored data or worse storing malicious data (The damage can be as severe as the hacker's imagination and ability).
-    
     \begin{figure}[H]
     	\centering
     	\includegraphics[scale=0.80]{figures/injection}
@@ -229,9 +227,20 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     	\label{injection}
     \end{figure}
     
+    
+    Injection vulnerabilities (particularly SQL injections) are the top vulnerability on the OWASP list \cite{OWASP2017}. As the figure below illustrates, it is an easily exploitable attack vector (as it is text based) and exploits interpretor syntax and can have a severe impact on an application e.g. MariaDB could be exploited by truncating all stored data or worse storing malicious data (The damage can be as severe as the hacker's imagination and ability).
+    
+
     The most common cause of code injection i.e. SQL injection has been easily dealt with via the use of prepared statements to interact with the MariaDB in Artemis; otherwise known as a parameterised statement, a prepared statement is used to execute the same statement repeatedly with high efficiency and prevent SQL injection as per the PHP API\cite{PHP}. The use of prepared statements eliminates the possibility of SQL injection and avoid the pitfalls of relying on \textit{Escaping Strategy} (albiet as an extra layer of security Artemis does use PHP's native MySQLi escape methods, despite not actually being necessary in lieu of prepared statements), which can be notoriously hard to implement perfectly.
     
-    To completely mitigate this attack vector all user input is  sanitized via PHP's native \textit{strip\_tags} function. As per the PHP manual this sanitizes all PHP and HTML code into ordinary strings . Effectively the relevant interpreters have been insulated from user injected code and this risk has been mitigated in Artemis.
+    To completely mitigate this attack vector within the context of Artemis, all user input is  sanitized via PHP's native \textit{strip\_tags} function. As per the PHP manual this sanitizes all PHP and HTML code into ordinary strings. Effectively the relevant interpreters have been insulated from user injected code and this risk has been almost eliminated in Artemis.
+    
+    In summary code injection has been prevented as follows:
+    \begin{enumerate}
+        \item Sanitizing User Input.
+        \item Escaping User Input.
+        \item Parameterised/Prepared Statements for storing sanitised and escaped user input into MariaDB.
+    \end{enumerate}
     
     \begin{figure}[h]
     	\centering
@@ -245,20 +254,112 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     
     Authentication and/or session management functionality are often implemented incorrectly \cite{OWASP2017}. Effectively this could allow malicious attackers to compromise passwords, keys, or session tokens, and other flaws via assuming a victim's identity on the social network \cite{OWASP2017}.
     
+    OWASP PHP Security project finds that the PHP's default session facility is safe and generates a session id that is sufficiently random \cite{OWASPa}. However the project does recommend steps to prevent common attack vectors within this category such as session hijacking. These have been addressed as follows:
+    
+    \newpage
+    
+    \begin{enumerate}
+        \item \textbf{Session Hijacking}: 
+        \begin{enumerate}
+            \item Session Fixation\cite{OWASPa} and Rolling Session ID's: After a successful user login and with each page visit the session id has been regenerated using the PHP function \textit{session\_regenerate\_id}. Effectively each page visit invalidates the last session id reducing the risk of compromise due to a hijacked session.
+            \item Invalidate Session ID: Incorrect session ID's are invalidated and users are forcefully redirected to the application log in page, regardless of which page they are on via the use of header.php.
+            \item Session Expiration: Sessions are expired after 30 seconds of inactivity as per OWASP reccomendations, using the PHP function \textit{session\_set\_cookie\_params}
+        \end{enumerate}
+        \item \textbf{Cookie Management}:
+        OWASP \cite{OWASPa} recommends standard good security practices such as not serializing cookie data (due to an increased scope of security concerns) or storing sensitive data in a cookie (which can easily be accessed by a hacker or even the user themselves).  These have been incorporated in Artemis's design.
+        \begin{enumerate}
+            \item Cookie Parameters: The \textit{cookie\_params} function has been used to secure the cookie settings for artemis. This involves:
+                \begin{itemize}
+                    \item Setting a cookie lifetime (an arbitrary 30 seconds).
+                    \item Path on the domain where the cookie will work; Currently set to work on the entire domain but will need to be reconfigured on deployment.
+                    \item Cookie domain, currently local host but will need to be reconfigured as reasonable at the time of deployment.
+                    \item Secure connection transport protocol; See below for details on SSL.
+                    \item Enabling HTTP only session cookies;See below for details.
+                \end{itemize}
+                Clearly not all of cooke settings security features can not be factored in during development by default as some of them rely on the existence of an actual domain name i.e.SSL,HTTP/HTTPS, domains and path. A self signed certificate in these instances is at best a half measure and would ultimately need to be replaced once an actual domain is secured. Therefore clear and explicit disclosure has been made in developer documents regarding re-factoring at the time of deployment and within the source code itself; Toggling these security features is as simple as changing a boolean value, which is deemed not unnecessarily onerous as long as it is clearly disclosed.
+        \end{enumerate}
+    \end{enumerate}
 
     \item \textbf{Cross Site Scripting (XSS)}:
     
-    XSS vulnerabilities include the inclusion of untrusted data in a new web page without proper validation or escaping, or updates an existing web page with user supplied data using a browser API that can create JavaScript. This allows the execution of malicious scripts in the victim browser \cite{OWASP2017}.
+    XSS vulnerabilities include the inclusion of untrusted data in a new web page without proper validation or escaping; particularly problematic with browser API's that create JS. Depending on the application use case XSS mitigation can take many forms. Given that HTML and PHP tags as user input are not necessary in Artemis, this risk has been completely mitigated by using the sanitisation strategy mentioned during the mitigation of code injection. The user unput sanitisation strategy which relies on stripping HTML, PHP tags and   special HTML entities conversion to ordinary strings has the added advantage of completely mitigating XSS.
+    
+    \textbf{Security Extension: Self XSS}:
+    While OWASP doesn't specifically identify guarding against Self XSS as a major security; An inspection of the  the client side code for FaceBook and Google Hangouts reveals that mainstream social networks warn users against self XSS attacks i.e. a social engineering attack vector where malicious hackers convince users to execute code in a browser console so as to compromise their own web security \cite{FaceBook}. An example of Facebook warning it's users against self xss is illustrated below:
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=0.75,right]{chapters/chapter03/figures/faceBook.png}
+    	\mycaption[FaceBook Self XSS Warning]{FaceBook Self XSS warning in browser console.}
+    	\label{faceBookSelfXSS}
+    \end{figure}
+    
+    As the figure above illustrates this a simple console message, meant to grab the attention of the client; should they access developer tools in their browser. Therefore it was adopted in Artemis's design which warn's its own users against Self XSS (as illustrated below). It is reasoned that if main stream social networks have adopted this practice, it is not unreasonable to do the same. Note that the console message below has been designed in a manner to catch the users attention, before they try to attempt anything.
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=0.44,right]{chapters/chapter03/figures/ArtemisXSS.png}
+    	\mycaption[Artemis Self XSS Warning]{Artemis Self XSS warning in browser console.}
+    	\label{ArtemisSelfXSS}
+    \end{figure}   
+    
+    
     
     \newpage
     
     \item \textbf{Broken Access Control}:
     
-    Lack of restriction based on the authentication of users may result in  malicious access to unauthorized functionality and/or data, such as access to other user accounts, view sensitive files, modify other user's data and  changing access rights \cite{OWASP2017}. The organisation also provides a list of weak or redundant encryption keys and protocols, along with alternative modern ones that are more secure \cite{OWASP2017}.
+    A White Listing or Black Listing strategy was considered for the purposes of Artemis, but was deemed onerous for implementing within the context of a dynamically generated application of it's design. Artemis makes use of server side and database logic to serve various access control relevant features such as personal messages, comments, newsfeed, bio etc. Therefore it is realistically not possible (assuming no human error) to view information that a person does not have access to, if the server side DB logic does not concur. E.g. If a person tries to access the newsfeed of a person they are not friends with via direct object reference, it is not possible as they will be redirected to a 'limited' view of the relevant person's profile.
+    
+    Admittedly this does the raise some ethical concerns such as the need to block malicious users in the case of cyber bullying. However this is not relevant to Web Security and will be discussed in the concluding chapter of this report.
     
     \item \textbf{Security Misconfiguration}:
     
-    As per OWASP \cite{OWASP2017} recommendations good security requires having a secure configuration defined and deployed for the application, frameworks, application server, web server, database server etc. To do this secure settings should be defined, implemented, and maintained, as defaults are often insecure, a matter to be considered for the technical report. Additionally, software should be kept up to date\cite{OWASP2017}, therefore relevant notes will have to be made in the delevoper manuals disseminated on open source platforms.
+    As per OWASP \cite{OWASPa} PHP is by default an insecure language for deployment. The reason for this is that PHP needs to be reconfigured to switch from development mode to settings more suitable for deployment e.g. by default DB errors will lead to a PHP application leaking sensitive server and directory information which a hacker can use to probe an application and discover vulnerabilities. The file responsible for configuring php is known as \texxit{php.ini} or the \texxit{configuration file}\cite{PHPa}.
+    
+    The configuration file allows for useful settings to be turned on such as detailed error messages during development. However what is an asset during development is usually a major liability during production or deployment. Therefore a php.ini file has been shared in the project; solely for the purpose of deployment as opposed to development.
+    
+    The configuration file has been broken up as follows and is explained accordingly \cite{OWASPa}:
+    \begin{itemize}
+        \item \textbf{PHP Error Handling}\cite{OWASPb}: OWASP's PHP project recommends the following settings  illustrated below. The underlying rationale here is to turn off features such as compiler warnings that may reveal sensitive information about the source code of the program. Whilst these settings are helpful during development they are not suitable from a security perspective during production.
+            \begin{figure}[H]
+            	\centering
+            	\includegraphics[scale=0.44,center]{chapters/chapter03/figures/errorPHP.png}
+            	\mycaption[PHP Error Handling Configuration]{PHP Error Handling Configuration}
+            	\label{PHPError}
+            \end{figure}   
+
+        \item \textbf{PHP General Settings}\cite{OWASPb}: URL routing and default directory setup is usually vulnerable in PHP. The following settings are good practice and prevent scenarios such as easy escalation of local file inclusion to remote file inclusion and explicitly setting the document root folder.
+        
+            \begin{figure}[H]
+            	\centering
+            	\includegraphics[scale=0.44,center]{chapters/chapter03/figures/generalPHP.png}
+            	\mycaption[PHP General Configuration]{PHP General Configuration}
+            	\label{PHPGeneral}
+            \end{figure}   
+        
+    
+        \item \textbf{PHP Executable Handling\cite{OWASPb}: OWASP} \cite{OWASPb} explicitly identifies the following as extrenely insecure function in PHP which need to be turned off unless explicitly necessary, as they can be exploited by hackers. As Artemis does not use them they are deemed unnecessary:
+            
+            \begin{figure}[H]
+            	\centering
+            	\includegraphics[scale=0.44,center]{chapters/chapter03/figures/execPHP.png}
+            	\mycaption[PHP Executable Handling Configuration]{PHP Executable Handling Configuration}
+            	\label{PHPExec}
+            \end{figure}
+
+        \item \textbf{PHP Session Handling}\cite{OWASPb}:
+
+            \begin{figure}[H]
+            	\centering
+            	\includegraphics[scale=0.44,center]{chapters/chapter03/figures/execPHP.png}
+            	\mycaption[PHP Session Handling Configuration]{PHP Session Handling Configuration}
+            	\label{PHPSess}
+            \end{figure}       
+
+    \end{itemize}
+    
+    
     
     \item \textbf{Sensitive Data Exposure}:
     
@@ -270,7 +371,29 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     
     \item \textbf{Cross Site Request Forgery (CSRF)}:
     
-    A CSRF attack forces a logged-on victim's browser to send a forged HTTP request, including the victim’s session cookie and any other automatically included authentication information, to a vulnerable web application \cite{OWASP2017}. OWASP recommends using pre-existing CSRF defenses available within most modern frameworks.
+    A CSRF attack forces a logged-on victim's browser to send a forged HTTP request, including the victim’s session cookie and any other automatically included authentication information, to a vulnerable web application \cite{OWASP2017}. Already introduced mitigation strategies for other aspects such as cookie management, session hijacking, injection and sanitisation reduce the possibility of this vector as it usually relies on social engineering and malicious code.
+    
+    However as CSRF attack usually misuses a web application to create undesired affects, special emphasis has been placed on particularly sensitive data such as account settings which involve changing the password. In this instance the \textit{Google Recaptcha V2 API} was utilised to add an extra layer of security to prevent CSRF. Furthermore the optional IP tracking argument has been used to deploy the Recaptcha to track malicious activities. The implementation is illustrated as follows:
+  
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=0.44,center]{chapters/chapter03/figures/captchaGoogle.png}
+    	\mycaption[Google ReCaptcha]{Google ReCaptcha. Request on Artemis Accounts Settings Page.}
+    	\label{googleRecaptcha}
+    \end{figure}  
+    
+    \newpage
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=0.44,center]{chapters/chapter03/figures/verifyGoogle.png}
+        \mycaption[Google ReCaptcha]{Google ReCaptcha. Test.}
+        \label{ArtemisSelfXSS}
+    \end{figure}  
+    
+
+    
+    
     
     \item \textbf{Using Components with Known Vulnerabilities}:
     
