@@ -579,7 +579,7 @@ HTML, CSS and JavaScript (JS) are basic building blocks in most web applications
     MDN web development guidelines also recommend accommodating  colour blind accessibility via the use of colour contrast checkers during web development \cite{Mills}. Therefore WebAIM a color contrast checker was iteratively used during development to assess the RGB or hexadecimal values of the colours used for the interface. WebAIM is particularly useful as it attempts to comply with the W3C WCAG 2.0 protocol \cite{WebAIM,W3Ca,W3Cb}. Resultantly Artemis benefits from font sizes, background and foreground colours which go above and beyond the rationales of merely aesthetically pleasing combinations.
     
 
-\subsection{ARIA}
+\subsection{WAI-ARIA}
 
 Semantically well formed HTML, CSS and JS is the recommended first port of call for making UI's accessible to assistive technology \cite{Sukardi2016}. However as discussed earlier, given the complexity of a social network's UI which is almost certainly going to use  dynamically updated content, if not HTML5 features that do not conform to the normative semantics, an alternative tool is necessary to adopt mitigating strategies \cite{Sukardi2016}.
 
@@ -679,15 +679,7 @@ In these cases a combination powerful ARIA live region features and appropriate 
     
     
     
-    
 \end{enumerate}
-
-\item\textbf{Hidden HTML Tags}:
-
-
-
-
-
 \end{enumerate}
 
 
@@ -695,6 +687,11 @@ In these cases a combination powerful ARIA live region features and appropriate 
 
 \subsubsection{Creating Semantics}
 
+As explained earlier ARIA has been used to create semantics for the complex or unconventional UI features of Artemis.This has been achieved by  using \textit{aria-labelledby, aria-describedby} and \textit{aria-label}, as per normative implementation patters prescribed by the MDN (vide WAI-ARIA), combined with roles compatible with the Data Role Model to override the native semantics of HTML elements so as to allow assistive technology to access the data as intended.
+
+The aria-labelledby attribute contains element ids of it's constituent parent elements \cite{MozillaDeveloperNetworkb}, creating relationships between objects and their labels; aria-described by is very similar to the aforementioned except that it is used to supplement the relationship with an apt description \cite{MozillaDeveloperNetworkd}. As per the MDN, \say{\textit{a label describes \textbf{the essence} of an object, while \textbf{a description} provides more information that the user might need}}. The important thing to note is that without unique element id\textquotesingle s, corresponding relationship labels and descriptions where necessary a UI can become inaccessible in the case of the former or  hard to understand in the case of the latter \cite{MozillaDeveloperNetworkb,MozillaDeveloperNetworkd}.
+
+The complexity of the UI in Artemis is best captured via the scope of a  single post; A complex relationship is visually implied between it's post body, sender's profile, time stamp, corresponding delete button, a list of comments (that is actually an iframe) on that post, like buttons etc; Coupled with being dynamically generated via a scrolling newsfeed/wall, from the perspective of an assistive technology an unrelated mess of HTML elements is generated.
 
 
 
