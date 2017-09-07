@@ -694,5 +694,13 @@ The aria-labelledby attribute contains element ids of it's constituent parent el
 The complexity of the UI in Artemis is best captured via the scope of a  single post; A complex relationship is visually implied between it's post body, sender's profile, time stamp, corresponding delete button, a list of comments (that is actually an iframe) on that post, like buttons etc; Coupled with being dynamically generated via a scrolling newsfeed/wall, from the perspective of an assistive technology an unrelated mess of HTML elements is generated.
 
 
+To mitigate the problem of complex UI\textquotesingle s (both for the post feature and others) the following design pattern was adapted via MDN's list of normative implementations, for traversing nested HTML elements via their relationships:
 
+    \begin{figure}[h]
+    	\includegraphics[scale=0.66,center]{chapters/appendices/figures/multipleLabel.png}
+    	\mycaption[Multiple Labelling Strategy for Traversing Nested HTML Elements ]{ARIA to Change State of HTML Element For Assistive Technology\cite{MozillaDeveloperNetworkb}}
+    \end{figure}
 
+The above pattern was implemented by generating and concatenating unique ID tags to the HTML element and aria-labelledby attribute. Additionally these relationships were explained by the aria-described by feature \cite{MozillaDeveloperNetworkd}. Finally where deemed necessary native HTML element role semantics were overridden with applicable  normative roles as per the Data Role Model prescribed by WAI-ARIA; e.g. in the case of the comment\textquotesingle s iframe where a separate HTML page would confuse assistive technology so the roles have been overridden to depict a list element with constituent listitem elements.
+
+The result of this strategy is clearly defined and described relationships between complex UI features, with semantically sensible HTML. Within the context of a single post, the user is able to navigate  individual semantic constituents of a post via unique ids, corresponding labels and supporting descriptions or roles; an approach adapted towards other UI features of Artemis as well.
