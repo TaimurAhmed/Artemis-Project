@@ -73,6 +73,7 @@ The key features of Artemis are listed and briefly explained as follows:
 
 
 \section{User Evaluation and Testing}
+\label{sec:evalAndTesting}
 
     As part of user evaluation and testing for Artemis a sample size of 10 students from the UoB CS department were sought and subjected to series of open ended use cases (Appendix \textbf{\ref{fig:2/6}} ) so that participants may experience all of Artemis features in a limited time period for the purposes of user evaluation and testing. The underlying aim of the use cases was to test Artemis throughly for bugs, undesirable UX features and evaluate whether the UI was Web Credible i.e. to make the aesthetic design \textit{persuasive} against as per the STPL criterion.
     
@@ -97,6 +98,7 @@ The key features of Artemis are listed and briefly explained as follows:
     \begin{figure}[h]
     	\includegraphics[scale=0.66,center]{chapters/chapter04/figures/userEvaluationGraph.png}
     	\mycaption[User Evaluation Results - Bar Graph]{User Evaluation Results - Bar Graph}
+    	\label{graph}
     \end{figure}
     
     
@@ -116,7 +118,9 @@ The key features of Artemis are listed and briefly explained as follows:
     
     \end{enumerate}
     
-    It seems that most users were satisfied with the features provided in Artemis with an average score above 4.7 out of 5. It can be deduced given the scope of the question asked that the users were satisfied with Artemis\textquotesingle s. The exception was Q 9 which resulted in above average but unusually high  feedback i.e. user's wanted to be able to hover over icons and links, to understand their purpose; without needing to click on them. Whilst some users found the icons intuitive and familiar, others struggled at first i.e. validating user feedback that merely choosing familiar icons is not sufficient for everyone. To rectify this a note of the issue was made (See Figure \textbf{\ref{listOBugs}}) and the code re-factored to add previously missing \textit{title attributes} to relevant HTML elements. Adding this feature to the code enables users to hover over UI elements and understand the purpose, without having to click on them.
+    It seems that most users had a positive experience with the features provided in Artemis with an average score above 4.7 out of 5. It can be deduced given the scope of the question asked that the users were satisfied with Artemis\textquotesingle s. The exception was Q 9 as evidenced by Figure \ref{graph} which resulted in above average but unusually high  feedback i.e. user's wanted to be able to hover over icons and links, to understand their purpose without resorting to clicking on them. Whilst some users found the icons intuitive and familiar, others struggled  i.e. validating user feedback that merely choosing familiar icons is not sufficient for everyone. To rectify this a note of the issue was made (See Figure \textbf{\ref{listOBugs}}) and the code re-factored to add previously missing \textit{title attributes} to relevant HTML elements. Adding this feature to the code enables users to hover over UI elements and understand the purpose, without having to click on them.
+    
+    Regarding the aesthetics of the program, whilst the majority of the users were satisfied, some users complained about the social network not being blue (Artemis has a predominantly green theme). This is an interesting observation as it may deteriorate user perception of Web Credibility, if user's expect that social networks are normatively blue and alternative interfaces are in some way inferior. A cursory read of non-academic literature on the matter seems to imply that this may be a contentious issue worth exploring; however it is well outside the scope of this project and has for now been largely ignored.
     
     
     

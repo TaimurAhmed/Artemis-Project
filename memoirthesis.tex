@@ -35,6 +35,7 @@
 \usepackage{textcomp} %For apostrophe
 \usepackage{dirtytalk}%API: say{} to quote. That is it.
 \usepackage{lscape}% lscape.sty Produce landscape pages in a (mainly) portrait document.
+\usepackage{pdfpages}
 \ifpdf
 \pdfinfo{
    /Author (Author's name)
@@ -181,7 +182,7 @@
 \usepackage{etex}						%eTeXÕs extended support for counters
 \usepackage{fixltx2e}					%Eliminates some in felicities of the 
 									%original LaTeX kernel
-\usepackage[english]{babel}		%For languages characters and hyphenation
+\usepackage[swedish,english]{babel}		%For languages characters and hyphenation
 \usepackage{color}                    				%Creates coloured text and background
 \usepackage[colorlinks=true,
 		     allcolors=black]{hyperref}              %Creates hyperlinks in cross references
@@ -359,6 +360,10 @@
 \input{frontmatter/declaration}
 \clearemptydoublepage
 %
+%
+\input{frontmatter/acronyms}
+\clearemptydoublepage
+%
 \renewcommand{\contentsname}{Table of Contents}
 \maxtocdepth{subsubsection}
 \tableofcontents*
@@ -378,6 +383,7 @@
 % subdirectories.
 \mainmatter
 %
+
 \import{chapters/chapter01/}{chap01.tex}
 \import{chapters/chapter02/}{chap02.tex}
 \import{chapters/chapter03/}{chap03.tex}

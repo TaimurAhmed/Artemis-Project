@@ -7,14 +7,14 @@
 \chapter{Artemis Design and Implementation}
 \label{Artemis Design and Implementation}
 
-\initial{T}his chapter introduces and explains the implementation of Artemis; Introducing key features identifying \textit{how} Artemis was developed and the the overarching design values used to focus development i.e. OER, Captology (Web Credibility), Security and Accessibility.
+\initial{T}his chapter introduces the underlying technical design values for developing Artemis i.e. OER, Web Credibility (\textit{captology}), Application Security and Accessibility, thus explaining the finer details of implementing Artemis and resultant development considerations.
 
 
 \section{Development Tools and Languages}
 
-Artemis has been developed using the XAMPP-VM so as to use XAMP for Linux within the OS X environment, using the convienience of the OS X hypervisor to emulate a development environment that can be expected of industry standard production \cite{ApacheFriends.org}. Therefore Artemis has been predominantly written in PHP, is served by Apache and uses MariaDB (an SQL Database). An alternative  JS and NoSQL full stack was considered, specifically the MeteorJS full stack; however it stands to reason that MeteorJS is too niche and unsuitable for the OER modality of the tool and desired longevity in the Open Source community. Furthermore a conventional SQL oriented stack is considered desirable for building a social network as evidenced by the experience of the lead developers of Disapora an Open Source social network that had to infamously migrate from MongoDB to SQL \cite{Mei}.
+Artemis has been developed using the XAMPP-VM so as to use XAMP for Linux within the OS X environment, exploiting the convenience of the OS X hypervisor to emulate a development environment that can be expected of industry standard production \cite{ApacheFriends.org}. Therefore Artemis has been predominantly written in PHP, is served by Apache and uses MariaDB (SQL Database). An alternative  JS and NoSQL full stack was considered, specifically the MeteorJS full stack; however it stands to reason that MeteorJS is too niche and unsuitable for the OER modality of the tool and desired longevity in the Open Source community (despite almost remarkable ease for the purpose of implementation). Furthermore a conventional SQL oriented stack is considered desirable for building a social network as evidenced by the experience of the lead developers of Disapora an Open Source social network that had to infamously migrate from MongoDB to SQL \cite{Mei}.
 
-Cross browser compatibility is outside of the scope of this project. However during development and evaluation the product has been used indiscriminately between Google Chrome, Mozilla Firefox (Developer Edition) and Safari. This approach helped target niche vendor specific issues, however it is stressed that complete cross compatibility is beyond the scope of the project and has not been explicitly attempted beyond the general good development practice of using multiple industry leading browsers.
+Cross browser compatibility is outside of the scope of this project. However during development and evaluation the product has been used indiscriminately between Google Chrome, Mozilla Firefox (Developer Edition) and Safari. This approach helped target niche vendor specific issues, however it is stressed that complete cross compatibility is beyond the scope of the project and has not been explicitly attempted beyond the general good development practice of using multiple industry leading browsers, as well as underlying responsive design principles.
 
 
 
@@ -24,10 +24,10 @@ Cross browser compatibility is outside of the scope of this project. However dur
 
 \section{Stakeholder Assessment and Participation}
 
-In an earier sub-section titled  \textit{Three Principle Stakeholders} it was determined that to enable a desirable pedagogy it would be prudent to investigate the primary stakeholders of a flexible pedagogy \cite{Gordon2014}; i.e. the UoB TEL team, CS course instructors and the student cohort are to be considered so as to ensure the successful development, deployment and adoption of the solution. Therefore the values of the Primary Stakeholders was sought and incorporated into Artemis as follows, within the reasonable constraints of the project (The following is an overview of the work done and specific references towards the work done will be made when relevant):
+In an earier sub-section titled  \textit{Three Principle Stakeholders} it was determined that to enable a desirable pedagogy it would be prudent to investigate the primary stakeholders of a flexible pedagogy \cite{Gordon2014}; i.e. the UoB TELED team, CS course instructors and the student cohort are to be considered so as to ensure the successful development, deployment and adoption of the solution. Therefore the values of the Primary Stakeholders was sought and incorporated into Artemis as follows, within the reasonable constraints of the project (The following is an overview of the work done and specific references towards the work done will be made when relevant):
 
 \begin{itemize}
-    \item \textbf{TEL Team}: The TELED (Technology Enhanced Learning and Education Development)  department at the University of Bristol has a wide mandate that mandate that broadly seems to straddle procurement, deployment, adoption, training and research associated with TEL solutions at the UoB \cite{UniversityofBristol}. An informal meeting was sought with the TEL team, which resulted in a valuable opportunity to personally discuss the project with the entire team who have a first hand experience of past, present and future TEL projects deployed at the UoB and their development criteria, as well as experience in identifying what leads to failed as opposed to successful adoption within the context of TEL solutions deployed at the UoB. It is interesting to note that the TEL team cited lack of instructor adoption, as opposed to student's adopting a technology as equally important to the latter. Indeed the meeting also revealed a declining interest in the use of student forums, which may make a social network a desirable outcome of this project (as the former is viewed as a dated solution).
+    \item \textbf{TELED Team}: The TELED or (Technology Enhanced Learning and Education Development) or the TEL department at the University of Bristol has a wide mandate that mandate that broadly seems to straddle procurement, deployment, adoption, training and research associated with TEL solutions at the UoB \cite{UniversityofBristol}. An informal meeting was sought with the TEL team, which resulted in a valuable opportunity to personally discuss the project with the entire team who have a first hand experience of past, present and future TEL projects deployed at the UoB and their development criteria, as well as experience in identifying what leads to failed as opposed to successful adoption within the context of TEL solutions deployed at the UoB. It is interesting to note that the TEL team cited lack of instructor adoption, as opposed to student's adopting a technology as equally if not more important to the latter. Indeed the meeting also revealed a declining interest in the use of student forums, which may make a social network a desirable outcome of this project (as the former is viewed as a dated solution).
     
     \item \textbf{Teachers}: Feedback from UoB course instructors was sought via informal interviews; Primarily from Dr David Bernhard and Dr Ian Holyer. The TELED department had specifically indicated that there was a lack of instructor interest/adoption in TEL solutions specifically at the CS department and this was elaborated upon by the CS instructors interviewed. It was primarily cited that most TEL solutions were not adopted for either or both of the following reasons:
     
@@ -37,7 +37,7 @@ In an earier sub-section titled  \textit{Three Principle Stakeholders} it was de
     \end{itemize}
     
     
-    The rationale for lack of adoption cited can be corroborated against the values of \textit{Web Credibility} and persuasive design, which are discussed in greater detail in a later section but indicate that users are less like to adopt a technology if it is faulty or it does not seem to be professionally designed. The findings of the aforementioned are embedded in the GUI design and also used as the basis of evaluating Artemis and subsequently refactoring it's source code; Addressing the aforementioned instructor values. Furthermore iterative feedback was sought from them during the development of the project for their opinions and advice regarding the aesthetic layout of the interface and desired functionality.
+    The rationale for lack of adoption cited can be corroborated against the values of \textit{Web Credibility} and persuasive design, which are discussed in greater detail later (See pages \textbf{\pageref{proffessional}} and \textbf{\pageref{avoidError}}) but indicate that users are less likely to adopt a technology if it is faulty or it does not seem to be professionally designed. The findings of the aforementioned are embedded in the GUI design and also used as the basis of evaluating Artemis and subsequently refactoring it's source code; Addressing the aforementioned instructor values. Furthermore iterative feedback was sought from instructors during the development of the project for their opinions and advice regarding the aesthetic layout of the interface and desired functionality.
 
 
     \item \textbf{Students}: Possibly the most important of the three stakeholders as the majority of the users are expected to be students. UoB CS conversion students and CS undergraduate student values were incorporated into Artemis via the following exercises:
@@ -46,11 +46,11 @@ In an earier sub-section titled  \textit{Three Principle Stakeholders} it was de
         
         \item \textbf{Focus Group}: An arbitrary group of people from the MSc and BSc Computer Science cohort were asked to participate in a brain storming session to help generate creative ideas for the proposed social  network. The underlying purpose was to generate creative ideas,use cases and possible modalities. The overarching outcome of this exercises was that there was a desire for a Facebook-StackoverFlow styled hybrid social network, as opposed to other mainstream social networks such as Twitter or Reddit(As corroborated by the TELED department,most students expressed a distaste for the relatively \textit{old fashioned} forums currently used at the UoB, which have an interface similar in substance to Reddit).
 
-        \item \textbf{Open Ended Evaluation and Refactoring}:  A group of ten people from the MSc and BSc Computer Science cohort were asked to participate in an Open Ended Evaluation (Appendix A1). The purpose of this evaluation was to assess and improve the Web Credibility of the Artemis UI and UX  and find any bugs or anomalies in the code. The results were subsequently used to refactor the source code and improve the UI (thus enhancing the underlying rationale of making it a \textit{Persuasive Technology} as discussed under the section in the chapter titled \textit{Persuasive Web Design}).
+        \item \textbf{Open Ended Evaluation and Refactoring}:  A group of ten people from the MSc and BSc Computer Science cohort were asked to participate in an Open Ended Evaluation (Appendix A1). The purpose of this evaluation was to assess and improve the Web Credibility of the Artemis UI and UX  and find any bugs or anomalies in the code. The results were subsequently used to refactor the source code and improve the UI (thus enhancing the underlying rationale of making it a \textit{Persuasive Technology} as discussed under the sections  \textbf{\ref{persuasiveWebDesignStart}} \& \textbf{\ref{sec:webCred}}).
         
-        As part of the  evaluation participants were asked to perform a series of use cases. The purpose of this step was to encourage the rigorous evaluation of all feature of Artemis. However users were also strongly encouraged to explore Artemis and try to maliciously break or damage the program (so as to cover use cases that might not have been envisioned). Furthermore users were required to test the application \textbf{unassisted} and without intervention, as is reasonably possible.
+        As part of the  evaluation participants were asked to perform a series of use cases. The purpose of this step was to encourage the rigorous evaluation of all feature of Artemis. However users were also strongly encouraged to  go beyond the use cases; explore Artemis as however they see fit and try to maliciously break or damage the program (so as to cover use cases that might not have been envisioned during). Furthermore users were required to test the application \textbf{unassisted} and without intervention, as is reasonably possible.
         
-        The approach yielded thorough feedback and bugs in Artemis. Therefore the code was subsequently refactored and improvements to the User Interface were made. These have been identified and discussed in the chapter on evaluation.
+        The approach yielded thorough feedback and bugs in Artemis. Therefore the code was subsequently refactored and improvements to the User Interface were made. These have been identified and discussed in the chapter on evaluation (See \textbf{\ref{sec:evalAndTesting}}).
         
         
     \end{itemize}
@@ -59,12 +59,13 @@ In an earier sub-section titled  \textit{Three Principle Stakeholders} it was de
 
  
 \section{Persuasive Web Design}
+\label{persuasiveWebDesignStart}
 
-At the core of a rationale for embedding  learning models \& methodologies, pedagogy and social networks to ultimately develop a TEL solution is the presumption that the application will influence it's users. A TEL solution unable to persuade users in a desirable manner, due to either lack of adoption or otherwise inefficacy, is a solution that will fail or perform poorly; A fact outlined via preliminary informal discussions with the TEL team at the UoB.
+At the core of a rationale for embedding  learning models \& methodologies, pedagogy and social networks to ultimately develop a TEL solution is the presumption that the application will influence it's users. A TEL solution unable to persuade users in a desirable manner, due to either lack of adoption or otherwise inefficacy, is a solution that will fail or perform poorly; A fact outlined via preliminary informal discussions with the TEL team at the UoB and evidenced by lack of instructor enthusiasm due to faulty UX/UI's.
 
-The broad research area of \textit{captology}, by the Stanford Persuasive Technology Lab (STPL) covers the somewhat controversial study of  how computer and applications can be designed to change what people think and do \cite{Fogg2002a,Fogg2002,Fogg2001,Fogg1999}. Whilst extensive research of this area is deemed beyond the constraints of the project, some consideration is given to the constituent factors that improve user acceptance and/or influence; \textit{Web Credibility} and resultantly \textit{Web Application Security} and \textit{User Accessibility}.
+The broad research area of \textit{captology}, by the Stanford Persuasive Technology Lab (STPL) covers the somewhat controversial study of  how computer and applications can be designed to change what people think and do things\cite{Fogg2002a,Fogg2002,Fogg2001,Fogg1999}. Whilst extensive research of this area is deemed well beyond the constraints of the project, some consideration is given to the constituent factors that improve user acceptance and/or influence; \textit{Web Credibility} and resultant albiet indirectly \textit{Web Application Security} and \textit{User Accessibility}.
 
-It is proposed that by enhancing web credibility and application security, security the TEL solution can be designed in a manner that enhances user acceptance and adoption; Effectively not just making the TEL solution more effective in achieving it's intended purpose, but also avoiding a common  underlying cause of failure for TEL solutions implemented at the UoB i.e. lack of adoption of applications by relevant users due to poor reliability,aesthetics, accessibility and usability. Indeed the underlying cause of failure was corroborated by instructors in the CS department who did not use certain TEL solutions available to them due to broken functionality or poor aesthetics i.e. Core issues against which the STPL advises so as to increase an application's \textit{Credibility} \cite{Fogg2002a,Fogg2002,Fogg2001,Fogg1999} and enhance application adoption or usage.
+It is proposed that by enhancing web credibility (as well as  application security and accessibility) security the TEL solution can be designed in a manner that enhances user acceptance and adoption; Effectively not just making the TEL solution more effective in achieving it's intended purpose, but also avoiding a common  underlying cause of failure for TEL solutions implemented at the UoB i.e. lack of adoption of applications by relevant users due to poor reliability,aesthetics, accessibility and usability. Indeed the underlying cause of failure was corroborated by instructors in the CS department who did not use certain TEL solutions available to them due to broken functionality or poor aesthetics i.e. Core issues against which the STPL advises so as to increase an application's \textit{Credibility} \cite{Fogg2002a,Fogg2002,Fogg2001,Fogg1999} and enhance application adoption or usage.
 
 
 
@@ -74,12 +75,14 @@ It is proposed that by enhancing web credibility and application security, secur
 
 
 \subsection{Web Credibility}
+\label{sec:webCred}
 
-One aspect of making a \textit{persuasive} TEL solution, is by enhancing \textit{web credibility}. Web credibility within the context of designing this TEL solution refers to embedding best practice within web design, so as to influence a user's perspective of trustworthiness of the tool itself \cite{Fogg2001,Fogg2002} i.e. making the social network ultimately more persuasive and fit for purpose, by improving user perceptions of reliability and trustworthiness of the application \cite{Fogg2001} and effectively improving user acceptance.
+An aspect of making a \textit{persuasive} TEL solution, is by enhancing \textit{web credibility} for Artemis. Web credibility within the context of designing this TEL solution refers to embedding best practice within web design, so as to influence a user's perspective of trustworthiness of the tool itself \cite{Fogg2001,Fogg2002} i.e. making the social network ultimately more persuasive and fit for purpose, by improving user perceptions of reliability and trustworthiness of the application \cite{Fogg2001} and effectively improving user acceptance and the odds of the underlying pedagogy succeeding.
 
 
 In view of the project constraints, it is proposed that web credibility for the proposed web application can be achieved by adopting  the \textit{Stanford Guidelines for Web Credibility} \cite{Fogg2002a}. These guidelines are effectively a condensed and easy to follow framework for developing a Web Credible application based on the extensive research carried out by the STPL and associates; effectively aiding web developers to enhance web credibility based on the findings of quantitative research as opposed to mere intuition \cite{Fogg2002a,Fogg2002,Fogg1999}.
 
+\newpage
 These are listed as follows and briefly explained within the context of developing Artemis  and it's use cases:
 
 \begin{enumerate}
@@ -97,12 +100,13 @@ These are listed as follows and briefly explained within the context of developi
         	\label{fig:UseCaseParticipatory}
         \end{figure}
         
-        This possible use case (illustrated in previous figure) was also proposed during the focus group as well and the likelihood of it instructor intervention corroborated via course instructors. It was agreed upon by consensus that it is a reasonable assertion that when material is shared on Artemis it can easily be verified by other students, course instructors or teaching assistants via post \textit{likes} and \textit{comments}.
+        This possible use case (illustrated in Figure \textbf{\ref{fig:UseCaseParticipatory}}) was also proposed during the focus group as well and the likelihood of it instructor intervention corroborated via course instructors. It was agreed upon by consensus that it is a reasonable assertion that when material is shared on Artemis it can easily be verified by other students, course instructors or teaching assistants via post \textit{likes} and \textit{comments}.
     
     \end{enumerate}
     
     \newpage
     \item \textbf{"Show that there's a real organization behind your site"} \cite{Fogg2002a}:
+    \label{devDocPage}
     
     A significant amount of development effort has been put into creating documentation for Artemis. Whilst the documentation has a wide and varied scope or purpose, it is essential to note that it indicates towards the existence of a professional team behind the project. A list of the documentation made readily accessible to Artemis users (i.e. always available in the application) is as follows:
     
@@ -137,16 +141,18 @@ These are listed as follows and briefly explained within the context of developi
             \end{figure}
     \end{itemize}
     
-    Furthermore UoB's offical favicons have been used (freely disseminated \cite{UniversityofBristola} and other default favicons were deprecated in favour of UoB's own logo \cite{UniversityofBristola} to further enhance user perception of a real organization. It is envisaged that if the tool is deployed in the future on UoB's in house servers this will further enhance this value as it will likely be disseminated via the organizations own web portal, giving users greater assurance within the relevant context (albeit Artemis is likely to have it's own domain name).
+    The developer documentation has been made available via any Artemis page i.e. it can be accessed at all times. Furthermore UoB's offical favicons have been used (freely disseminated \cite{UniversityofBristola} and other default favicons were deprecated in favour of UoB's own logo \cite{UniversityofBristola} to further enhance user perception of a real organization.
+    
+    It is envisaged that if the tool is deployed in the future on UoB's own servers this will further enhance this value as it will likely be disseminated via the organizations own web portal, giving users greater assurance within the relevant context (albeit Artemis is likely to have it's own domain name).
 
 
     \newpage    
     \item \textbf{"Highlight the expertise in your organization and in the content and services you provide."} \cite{Fogg2002a}:
     
    
-   The Artemis Wiki as shown in the figure on \textbf{page \pageref{wiki}} has been used to highlight the technical aspects of Artemis e.g. the accessibility and security features behind Artemis via the content of the application. Furthermore the wiki is used to communicate the pedagogical rationale behind the project i.e. the design aspects and use cases. Effectively the wiki summarizes the technical and design features of the project for the benefit of users, so as to provide assurance in the expertise behind the project.
+   The Artemis Wiki as shown in the figure on \textbf{page \pageref{wiki}} has been used to highlight the technical aspects of Artemis e.g. the accessibility and security features behind Artemis via the content of the application, so as to provide users with assurance. Furthermore the wiki is used to communicate the pedagogical rationale behind the project i.e. the design aspects and use cases. Effectively the wiki summarizes the technical and design features of the project for the benefit of users, so as to provide assurance in the technical expertise behind the project.
    
-   The developer page which can also be accessed via Artemis can be used to highlight the expertise behind Artemis (ideally at the time of deployment an experienced team of developers will maintain the application and can reuse these links).
+   The developer page which can also be accessed via Artemis at anytime can be used to highlight the expertise behind Artemis (ideally at the time of deployment an experienced team of developers will maintain the application and can reuse these links).
    
     \item \textbf{"Show that honest and trustworthy people stand behind your site"} \cite{Fogg2002a}:
     
@@ -162,12 +168,13 @@ These are listed as follows and briefly explained within the context of developi
     This this can and has been done by simply adding developer contact details for bug reports, suggested improvements and feedback via the social networks to the UI i.e. the developers can be contacted via the click of a button in the nav bar of Artemis, which is accessible on every page of Artemis at all times. Furthermore detailed information is provided in the Wiki, ReadMe markdown, Bug and Error reporting page and developer's personal page to make it easy for users to contact the developer and learn more about the application.
 
     \item \textbf{"Design your site so it looks professional (or is appropriate for your purpose)"} \cite{Fogg2002a}:
+    \label{proffessional}
     
-    As recommended by STPL and implemented in this project , user acceptance testing was carried out to rigorously evaluate and subsequently refactor Artemis. User testers were intentionally encouraged to explore the application,  maliciously try to break it and undergo a series of Use Cases (See Appendix A1) unassisted. Whilst during the evaluation process the feedback was largely positive, a log of all issues was kept and all errors/user preferences were accounted for via code refactoring (Collated, identified and explained in a later chapter).
+    As recommended by STPL and implemented in this project, user acceptance testing was carried out to rigorously evaluate and subsequently refactor Artemis. User testers were intentionally encouraged to explore the application,  maliciously try to break it and undergo a series of Use Cases (See Appendix A1) unassisted. Whilst during the evaluation process the feedback was largely positive, a log of all issues was kept and all errors/user preferences were accounted for via code refactoring (Collated,listed, identified and explained in Chapter \textbf{\ref{chap:Overview and Evaluation}}).
 
     \item \textbf{"Make your site easy to use"} \cite{Fogg2002a}:
     
-    It was proposed during the focus group meeting with students that this can be done by seeking design inspiration from familiar social networks such as Facebook and Wikipedia, as users are likely to be familiar with the lay out and design of these sort of web applications\cite{Fogg2002a}. Furthermore the UI was evaluated and refactored as per user testing to enhance this aspect of user interaction and consideration  for assistive client side technologies such as screen readers or magnifiers was made with the use of ARIA (discussed in a later section of this chapter).
+    It was proposed during the focus group meeting with students that this can be done by seeking design inspiration from familiar social networks such as Facebook and Wikipedia, as users are likely to be familiar with the lay out and design of these sort of web applications\cite{Fogg2002a}. Furthermore the UI was evaluated and refactored as per user testing to enhance this aspect of user interaction and consideration  for assistive client side technologies such as screen readers or magnifiers was made with the use of ARIA (see section \textbf{\ref{sec:accessibility}}).
     
     \item \textbf{"Update your site's content often (at least show it's been reviewed recently)."} \cite{Fogg2002a}:
     
@@ -178,6 +185,7 @@ These are listed as follows and briefly explained within the context of developi
     As Artemis is not a commercial venture, this aspect of enhancing Web Credibility is easily addressed by using no promotional content.
     
     \item \textbf{"Avoid errors of all types, no matter how small they seem."} \cite{Fogg2002a}:
+    \label{avoidError}
     
     The user evaluation testing was carried out without developer intervention and user testers were strongly encouraged to try and maliciously break and rigorously hack the program. This yielded valuable feedback used to refactor the code and will be discussed in a later chapter on evaluation and refactoring.
     
@@ -191,11 +199,11 @@ With the transition of the world wide web from web-sites to web applications, i.
 
 \subsection{OWASP}
 
-An extensive review of web application security is desirable but beyond the reasonable constraints of this project. Therefore  utilising the \textit{Open Web Application Security Project (OWASP) Top 10} \cite{OWASP2017} for identifying common or important design vulnerabilities and mitigating them was  used during development, as a viable alternative achievable within the constraints of the project.
+An extensive review of web application security is desirable but beyond the reasonable constraints of this project. Therefore  utilising the \textit{Open Web Application Security Project (OWASP) Top 10} \cite{OWASP2017} for identifying common or important design vulnerabilities and mitigating them was  used during development, as a viable alternative which is achievable within the constraints of the project.
 
-The Open Web Application Security Project is an online community  and  a respected  not-for-profit organisation which creates free to use articles, methodologies, documentation, tools, and technologies towards the benefit of web application security \cite{OWASP}. The organisation  annually releases research that identifies and underlines mitigation strategies for the \textit{"Ten Most Critical Web Application Security Risks"}\cite{OWASP2017} identified threat agents within the scope of qualitative benchmarks i.e. possible attack vectors, the prevalence and detectability of security vulnerabilities, the technical implications and the commercial/business implications.
+The Open Web Application Security Project is an online community  and  a respected  not-for-profit organisation which creates free to use articles, methodologies, documentation, tools, and technologies towards the benefit of web application security \cite{OWASP}. The organisation  annually releases research that identifies and explains mitigation strategies for the \textit{"Ten Most Critical Web Application Security Risks"}\cite{OWASP2017} possible threat agents within the scope of qualitative benchmarks i.e. possible attack vectors, the prevalence and detectability of security vulnerabilities, the technical implications and the commercial/business implications.
 
-The rationale behind these qualitative benchmarks to assist the quantification and ranking of security risks,  is illustrated as via the help of the following diagram which breaks a security vulnerability down into stages for classification and consideration:
+The rationale behind these qualitative benchmarks is to assist the quantification and ranking of security risks. These qualitative benchmarks are illustrated and broken down in figures \textbf{\ref{fig:Consideration of Threat Agents}} \& \textbf{\ref{fig:OWASP Risk Rating Methodology}}.
 
 % A single figure
 \begin{figure}[H]
@@ -205,7 +213,7 @@ The rationale behind these qualitative benchmarks to assist the quantification a
 	\label{fig:Consideration of Threat Agents}
 \end{figure}
 
-The OWASP foundation reasons \cite{OWASP2017} that attackers or threat agents can exploit various modes of attack or \textit{attack vectors}, based on \textit{prevalence} and ease of \textit{detecting security weaknesses}/vulerabilities that can have a negative impact  within a generic technical or application specific commercial context \cite{OWASP2017}. Apart from application specific implications, the rest of these benchmarks can be classified based on the severity; which results in classification for the purpose of ranking the OWASP Top 10 vulnerabilities:
+The OWASP foundation reasons \cite{OWASP2017} that attackers or threat agents can exploit various modes of attack or \textit{attack vectors}, based on \textit{prevalence} and ease of \textit{detecting security weaknesses}/vulnerabilities that can have a negative impact  within a generic technical or application specific commercial context \cite{OWASP2017}. Apart from application specific implications, the rest of these benchmarks can be classified based on the severity; which results in classification for the purpose of ranking the OWASP Top 10 vulnerabilities as illustrated in Figure \textbf{\ref{fig:OWASP Risk Rating Methodology}}.
 
 % A single figure
 \begin{figure}[H]
@@ -217,12 +225,11 @@ The OWASP foundation reasons \cite{OWASP2017} that attackers or threat agents ca
 
 Finally the risk rating methodology is used to compile an annual list of the most common, detectable and damaging security threats, along with mitigation strategies \cite{OWASP2017}. The proposed OWASP Top 10 for 2017, is effectively a mitigation strategy for this project that considers the likelihood and impact of security vulnerabilities. This seems to be a reasonable approach to security within the context of this project, as predicting attack vectors for every eventuality is not just futile but also undoubtedly unfeasible. Therefore within the context of the following attack vectors, Artemis has mitigated the risk as follows:
 
-\begin{enumerate}
-    \item \textbf{Injection}:
+
+    \subsubsection{Injection}
     
     \begin{figure}[H]
-    	\centering
-    	\includegraphics[scale=0.80]{figures/injection}
+    	\includegraphics[scale=0.80,center]{figures/injection}
     	\mycaption[Injection Classification]{Injection Classification \cite{OWASP2017}.}
     	\label{injection}
     \end{figure}
@@ -231,9 +238,11 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     Injection vulnerabilities (particularly SQL injections) are the top vulnerability on the OWASP list \cite{OWASP2017}. As the \textbf{Figure \ref{injection}} illustrates, it is a prevalent and easily exploitable attack vector (as it is text based) which exploits interpretor syntax and can have a severe impact on an application e.g. MariaDB could be exploited by truncating all stored data or worse storing malicious data (The damage can be as severe as the hacker's imagination and ability).
     
 
-    The most common cause of code injection i.e. SQL injection has been easily eliminated with via the use of prepared statements to interact with the MariaDB in Artemis. Otherwise known as a parameterised statement, a prepared statement is used to execute the same statement repeatedly with high efficiency and prevent SQL injection as per the PHP API\cite{PHP}. The use of prepared statements eliminates the possibility of SQL injection and avoid the pitfalls of relying on \textit{Escaping Strategy} (albiet as an extra layer of security Artemis does use PHP's native MySQLi escape methods, despite not actually being necessary in lieu of prepared statements), which can be notoriously hard to implement perfectly.
+    The most common cause of code injection i.e. SQL injection has been easily eliminated with via the use of prepared statements to interact with the MariaDB in Artemis. Otherwise known as a parameterised statement, a prepared statement is used to execute the same statement repeatedly with high efficiency and prevent SQL injection as per the PHP API \cite{PHP}. The use of prepared statements eliminates the possibility of SQL injection and avoids the pitfalls of relying on an \textit{Escaping Strategy} (albiet as an extra layer of security Artemis does use PHP's native MySQLi escape methods, despite not actually being necessary in lieu of prepared statements), which can be notoriously hard to implement perfectly.
     
     To completely mitigate this attack vector within the context of Artemis, all user input is  sanitized via PHP's native \textit{strip\_tags} function. As per the PHP manual this sanitizes all PHP and HTML code into ordinary strings. Effectively the relevant interpreters have been insulated from user injected code and this risk has been almost eliminated in Artemis.
+    
+
     
     In summary code injection has been prevented as follows:
     \begin{enumerate}
@@ -249,8 +258,7 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     	\label{Example Prepared Statement}
     \end{figure}
     
-
-    \item \textbf{Broken Authentication and Session Management}:
+    \subsubsection{Broken Authentication and Session Management}
     
     \begin{figure}[h]
     	\centering
@@ -260,7 +268,7 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     \end{figure}
     
     
-    As the \textbf{Figure \ref{XSS Classification}} illustrates OWASP found that authentication and/or session management functionality are often implemented incorrectly \cite{OWASP2017}. Effectively this could allow malicious attackers to compromise passwords, keys, or session tokens, and other flaws via assuming a victim's identity on the social network \cite{OWASP2017}, making the potential commercial and technical implications severe.
+    As  Figure \textbf{ \ref{Broken Authentication and Session Management Classification}} illustrates OWASP found that authentication and/or session management functionality are often implemented incorrectly \cite{OWASP2017}. Effectively this could allow malicious attackers to compromise passwords, keys, or session tokens, and other flaws via assuming a victim's identity on the social network \cite{OWASP2017}, making the potential commercial and technical implications severe.
     
     OWASP PHP Security project finds that the PHP's default session facility is safe and generates a session id that is sufficiently random \cite{OWASPa}. However the project does recommend steps to prevent common attack vectors within this category such as session hijacking. Therefore whilst using PHP's session facilities the additional considerations have been addressed as follows:
     
@@ -268,12 +276,13 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     \begin{enumerate}
         \item \textbf{Session Hijacking}: 
         \begin{enumerate}
-            \item Session Fixation\cite{OWASPa} \hl{and} Rolling Session ID's: After a successful user login and with each page visit the session id has been regenerated using the PHP function \textit{session\_regenerate\_id}. Effectively each page visit invalidates the last session id reducing the risk of compromise due to a hijacked session.
-            \item Invalidate Session ID: Incorrect session ID's are invalidated and users are forcefully redirected to the application log in page, regardless of which page they are on via the use of header.php.
+            \item Session Fixation\cite{OWASPa}: All valid sessions are auto-regenerated using PHP's native parameters after an arbitrary amount of seconds contingent
+            \item Rolling Session ID's: After a successful user login and with each page visit the session id has been regenerated using the native PHP function \textit{session\_regenerate\_id}. Effectively each page visit invalidates the last session id reducing the risk of compromise due to a hijacked session.
+            \item Invalidate Session ID: Incorrect session ID's are invalidated and users are forcefully redirected to the application log in page, regardless of which page they are on via the use of header.php (effectively a constiuent of every page on Artemis, other than the log in page).
             \item Session Expiration: Sessions are expired after 30 seconds of inactivity as per OWASP recommendations, using the PHP function \textit{session\_set\_cookie\_params} to configure session cookies and server side management.
         \end{enumerate}
         \item \textbf{Cookie Management}:
-        OWASP \cite{OWASPa} recommends standard good security practices such as not serializing cookie data (due to an increased scope of security concerns) or storing sensitive data in a cookie (which can easily be accessed by a hacker or even the user themselves).  These have been incorporated in Artemis's design.
+        OWASP \cite{OWASPa} recommends standard good security practices such as not serializing cookie data (due to an increased scope of security concerns) or storing sensitive data in a cookie (which can easily be accessed by a hacker or even the user themselves).  These have been incorporated in Artemis's development by simply following the instructions on good practice and implementing the following:
         \begin{enumerate}
             \item Cookie Parameters: The \textit{cookie\_params} function has been used to secure the cookie settings for artemis. This involves:
                 \begin{itemize}
@@ -293,7 +302,7 @@ Finally the risk rating methodology is used to compile an annual list of the mos
         \end{enumerate}
     \end{enumerate}
 
-    \item \textbf{Cross Site Scripting (XSS)}:
+    \subsubsection{Cross Site Scripting (XSS) and Self XSS}
     
     \begin{figure}[h]
     	\includegraphics[scale=0.55,center]{chapters/chapter03/figures/XSSClassification.png}
@@ -301,10 +310,9 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     	\label{XSSclassification}
     \end{figure}
     
-    XSS vulnerabilities are notoriously widespread, easy attack vectors to exploit and  usually client's bear the brunt of the fallout \cite{OWASP2017} as illustrated by \textbf{figure \ref{XSSclassification}}. XSS includes the inclusion of untrusted data (malicious text based attack scripts)in a new web page without proper validation or escaping \cite{OWASP2017}; particularly problematic with client side browsers and JS. Depending on the application use case XSS mitigation can take many forms. As HTML and PHP tags are  unnecessary user input in Artemis, this risk has been completely mitigated by using the sanitisation strategy mentioned during the mitigation of code injection. The user input sanitisation strategy which relies on stripping HTML, PHP tags and   converting HTML entities  to ordinary strings has the added advantage of completely mitigating XSS.
+    XSS vulnerabilities are notoriously widespread, easy attack vectors to exploit and  usually client's bear the brunt of the fallout \cite{OWASP2017} as illustrated by \textbf{figure \ref{XSSclassification}}. XSS includes the inclusion of untrusted data (malicious text based attack scripts)in a new web page without proper validation or escaping \cite{OWASP2017}; particularly problematic with client side browsers and JS. Depending on the application use case XSS mitigation can take many forms. As HTML and PHP tags are  unnecessary user input in Artemis, this risk has been completely mitigated by using the sanitisation strategy mentioned during the mitigation of code injection. The user input sanitisation strategy which relies on stripping HTML, PHP tags and  converting HTML entities  to ordinary strings has the added advantage of completely mitigating XSS.
     
-    \textbf{Security Extension: Self XSS}:
-    While OWASP doesn't specifically identify guarding against Self XSS  a variant of the XSS attack, which makes use of social engineering attack vectors\cite{FaceBook}; An inspection of the  the client side code for FaceBook and Google Hangouts reveals that mainstream social networks such as the aforementioned warn users against self XSS attacks. In the past FaceBook adopted an approach that would warn the user of Self XSS and disable the client side console; however for obvious reasons this was deemed problematic and exploitable by major browser vendors and prevented accordingly \cite{StackO}. These days FaceBook has adopted the approach illustrated in \textbf{Figure \ref{faceBookSelfXSS}}, so as to mitigate the possibility of social engineering attack vectors.
+    \textbf{Security Extension}: While OWASP doesn't specifically identify guarding against Self XSS  a variant of the XSS attack, which makes use of social engineering attack vectors \cite{FaceBook}; An inspection of the  the client side code for FaceBook and Google Hangouts reveals that mainstream social networks such as the aforementioned warn users against self XSS attacks. In the past FaceBook adopted an approach that would warn the user of Self XSS and disable the client side console; however for obvious reasons this was deemed problematic and exploitable by major browser vendors and prevented accordingly \cite{StackO}. These days FaceBook has adopted the approach illustrated in \textbf{Figure \ref{faceBookSelfXSS}}, so as to mitigate the possibility of social engineering attack vectors.
     
     \begin{figure}[h]
     	\centering
@@ -318,15 +326,15 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     \begin{figure}[h]
     	\centering
     	\includegraphics[scale=0.44,right]{chapters/chapter03/figures/ArtemisXSS.png}
-    	\mycaption[Artemis Self XSS Warning]{Artemis Self XSS warning via browser console.}
+    	\mycaption[Artemis Self XSS Warning - A Novel Adaptation of Facebook' s Solution]{Artemis Self XSS Warning - A Novel Adaptation of Facebook' s Solution}
     	\label{ArtemisSelfXSS}
     \end{figure}   
     
     
     
     \newpage
-    
-    \item \textbf{Broken Access Control}:
+
+    \subsubsection{Broken Access Control}
     
     \begin{figure}[h]
     	\centering
@@ -341,7 +349,8 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     
     During user evaluation some feedback was received regarding blocking malicious users due to ethical issues such as cyber bullying. This will be discussed in the concluding chapters.
     
-    \item \textbf{Security Misconfiguration}:
+    \newpage
+    \subsubsection{Security Misconfiguration}
     
     \begin{figure}[h]
     	\centering
@@ -358,7 +367,7 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     
     The configuration file has been broken up as follows and is explained accordingly \cite{OWASPa}:
     \begin{itemize}
-        \item \textbf{PHP Error Handling}\cite{OWASPb}: OWASP's PHP project recommends the following settings  illustrated below. The underlying rationale here is to turn off features such as compiler warnings that may reveal sensitive information about the source code of the program. Whilst these settings are helpful during development they are not suitable from a security perspective during production.
+        \item \textbf{PHP Error Handling}\cite{OWASPb}: OWASP's PHP project recommends the following settings  illustrated below. The underlying rationale here is to turn off features such as client side compiler warnings that may reveal sensitive information about the source code of the program. Whilst these settings are helpful (if not merely a commercial reality) during development they are not suitable from a security perspective during production.
             \begin{figure}[H]
             	\centering
             	\includegraphics[scale=0.44,center]{chapters/chapter03/figures/errorPHP.png}
@@ -376,7 +385,7 @@ Finally the risk rating methodology is used to compile an annual list of the mos
             \end{figure}   
         
     
-        \item \textbf{PHP Executable Handling\cite{OWASPb}: OWASP} \cite{OWASPb} explicitly identified the following as extremely insecure function in PHP which need to be turned off unless explicitly necessary, as they can be exploited be clearly used by hackers to create havoc. As Artemis does not use them they are deemed unnecessary and therefore disabled:
+        \item \textbf{PHP Executable Handling\cite{OWASPb}: OWASP} \cite{OWASPb} explicitly identified the following as extremely insecure functions in PHP which need to be turned off unless explicitly necessary, as they can be exploited be clearly used by hackers to create havoc. As Artemis does not use them they are deemed unnecessary and therefore disabled:
             
             \begin{figure}[H]
             	\centering
@@ -409,8 +418,8 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     
     
     
-    
-    \item \textbf{Sensitive Data Exposure}:
+
+    \subsubsection{Sensitive Data Exposure}
 
     \begin{figure}[h]
     	\centering
@@ -421,11 +430,11 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     
     Within the context of Artemis this attack vector refers to leaked passwords that have not been correctly encrypted. It is worth noting that this seemed particularly problematic in the PHP community where many respected tutorials and forums recommended hashing with MDA5  as opposed to encryption with a modern algorithm.
     
-    OWASP strongly recommends against encrypting sensitive data with MDA5, as it is almost trivial to decry pt \cite{OWASPc}. It recommends the usage of other modern algorithms ideally Argon2 which uses a modern encryption algorithm \cite{OWASPc}. However Argon2 is not yet available in PHP's native functions. Whilst it has been proposed for release in upcoming versions (due after the submission of this project), there are other encryption algorithms available which are also approved by OWASP i.e. Bcrypt. Therefore Artemis has encrypts it's passwords with Bcrypt but recommends switching to Argon2 as soon as it is available in the new PHP release. This approach is deemed safer than using an external library from a relatively unknown source. It is also worth adding that all encryption algorithms should and have been \textit{salted}.
+    OWASP strongly recommends against encrypting sensitive data with MDA5, as it is almost trivial to decrypt \cite{OWASPc}. OWASP recommends the usage of other modern algorithms ideally Argon2 which uses a modern encryption algorithm \cite{OWASPc}. However Argon2 is not yet available in PHP's native functions. Whilst it has been proposed for release in upcoming versions (due almost weeks after the submission of this project), there are other encryption algorithms available which are also approved by OWASP i.e. Bcrypt. Therefore Artemis has encrypts it's passwords with Bcrypt but recommends switching to Argon2 as soon as it is available in the new PHP release. This approach is deemed safer than using an external library from a relatively unknown source. It is also worth adding that all encryption algorithms should and have been \textit{salted}.
     
     Further consideration has been given to data encryption by using the default hashing algorithm within the PHP library; i.e. it is regularly updated to increase the hash length or the algorithm (as per the PHP manual \cite{PHPc}). Therefore consideration within the database has been made by allowing for a recommended 255 characters.
     
-    Finally the default salt has been used as per PHP's own recommendations and the algorithm cost for the salt has been set at minimum of default 10 as per the PHP manual. However the following method has been provided for developers to use during production; In case their server allows for a higher cost (without it being unnecessarily onerous) by calculating an appropriate cost using native PHP function:
+    Finally the default salt has been used as per PHP's own recommendations and the algorithm cost for the salt has been set at minimum of default 10 as per the PHP manual.However the following script has been provided for developers to use during production; In case their server allows for a higher cost (without it being unnecessarily onerous) by calculating an appropriate cost using native PHP function:
 
 
     \begin{figure}[h]
@@ -441,7 +450,7 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     
     \newpage
     
-    \item \textbf{Insufficient Attack Protection}:
+    \subsubsection{Insufficient Attack Protection}
     
     \begin{figure}[h]
     	\centering
@@ -452,7 +461,7 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     
     This refers to app vulnerabilities such as APIs which lack the basic ability to detect, prevent, and respond to both manual and automated attacks \cite{OWASP2017}. The problem with mitigating this aspect of web security is two fold; it is generally reactive and specific to production. Therefore it has been largely ignored during this project and the onus of sufficient attack protection has been left on those adopting the technology during production.
     
-    \item \textbf{Cross Site Request Forgery (CSRF)}:
+    \subsubsection{Cross Site Request Forgery (CSRF)}
     
     \begin{figure}[h]
     	\centering
@@ -466,9 +475,8 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     
     A CSRF attack forces a logged-on victim browser to send a forged HTTP request, including the victim\textquotesingle s session cookie and any other automatically included authentication information, to a vulnerable web application \cite{OWASP2017}. Already introduced mitigation strategies for other aspects such as cookie management, session hijacking, injection and sanitisation reduce the possibility of this attack vector as it usually relies on social engineering and/or malicious code.
     
-    However as CSRF attack usually misuses a web application to create undesired affects, special emphasis has been  and should be \cite{OWASPa} placed on particularly sensitive data such as account settings which involve changing the password (the password is encrypted data and therefore of high value). In this instance the \textit{Google Recaptcha V2 API} was utilised to add an extra layer of security to prevent CSRF. Furthermore the optional IP tracking argument has been used to deploy the Recaptcha to track malicious activities.
+    However as CSRF attack usually misuses a web application to create undesired affects, special emphasis has been  and should be \cite{OWASPa} placed on particularly sensitive data such as account settings which involve changing the password (the password is encrypted data and therefore of high value). In this instance the \textit{Google Recaptcha V2 API} was utilised to add an extra layer of security to prevent unlikely CSRF attacks on particularly sensitive pages. Furthermore the optional IP tracking argument has been used to deploy the Recaptcha to track malicious activities via Google's external API.
     
-    \newpage
     The implementation  of ReCaptcha on Artemis pages is illustrated as follows:
   
     \begin{figure}[h]
@@ -490,7 +498,9 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     
     
     \newpage
-    \item \textbf{Using Components with Known Vulnerabilities}:
+            
+
+    \subsubsection{Using Components with Known Vulnerabilities}:
     
     \begin{figure}[h]
     	\centering
@@ -503,7 +513,7 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     
     Reasonable attempts have been made by researching external components before using them and making sure that said components are popular in the open source community and therefore the chances of outstanding security issues is low.
     
-    \item \textbf{Underprotected API's}:
+    \subsubsection{Underprotected API's}:
     
     \begin{figure}[h]
     	\centering
@@ -517,18 +527,18 @@ Finally the risk rating methodology is used to compile an annual list of the mos
     
     However as with vulnerable components, vulnerable API's need to be a part of an iterative and reactive strategy during production. Therefore most mitigation strategies are beyond the scope of this project. However attempts have been made to at least study the PHP API's vulnerabilities by refering to the PHP security project  for the development of Artemis and the resulting security mitigation strategy has been largely inspired by it.
     
-\end{enumerate}
 
 
 
 \newpage
 \section{Accessibility}
+\label{sec:accessibility}
 
 Accessibility within the context of Artemis refers to interaction with both those who use assistive client side technologies such as screen readers or magnifiers \cite{MozillaDeveloperNetworka} and those who do not e.g. users with weak or impaired eyesight \cite{W3Cb}. To quote the Mozilla Developer Network on the matter of accessibility, \say{\textit{The Web is fundamentally designed to work for all people, whatever their hardware, software, language, culture, location, or physical or mental ability. When the Web meets this goal, it is accessible to people with a diverse range of hearing, movement, sight, and cognitive ability} \cite{MozillaDeveloperNetworka}}. Beyond the aforementioned lofty ideal\textquotesingle s there is a strong underlying theoretical and commercial rationale for designing Artemis, so that it is accessible:
 
 \begin{enumerate}
 
-    \item As proposed; Artemis is a Web2.0 solution i.e. it generates dynamic content. In the past statically generated content had the advantage of being easy to access via assistive technologies such as screenreaders, however an application that relies on complex dynamically generated content will almost certainly be inaccessible to assistive technology if considerations are not made for client side device interaction \cite{MozillaDeveloperNetwork}. If a sample of users can not access a technology such as Artemis, it stands to reason that Artemis is a \textbf{commercial and pedagogical failure} for the relevant audience.
+    \item As proposed; Artemis is a Web 2.0 solution i.e. it generates dynamic content. In the past statically generated content had the advantage of being easy to access via assistive technologies such as screenreaders, however an application that relies on complex dynamically generated content will almost certainly be inaccessible to assistive technology if considerations are not made for client side device interaction \cite{MozillaDeveloperNetwork}. If a sample of users can not access a technology such as Artemis, it stands to reason that Artemis is a \textbf{commercial and pedagogical failure} for the relevant audience.
     
     Accessibility as a design value \textbf{supports and ties together underlying design} principles and rationale such as Web Credibility and Pedagogy. It can be argued that the former is enhanced by creating \textit{persuasive technology} via enhancing the perception of professionalism and skil; The latter benefits by allowing instructors to interact with all students and conveniently apply one single pedagogy for everyone.
     
@@ -601,13 +611,13 @@ The implementation of ARIA within the context of Artemis is a complex affair; Ho
 
 \end{enumerate}
 
-The following sub-section\textquotesingle s to this particular subsection attempts to breakdown the implementation of ARIA within Artemis in a logical manner as per the aforementioned three pronged approach. It is \textbf{very important} to note that the approaches complement each other and are almost certainly never mutually exclusive in terms of intended outcomes. It would be preferable to perceive the approach as incremental instead.
+The following sub-section\textquotesingle s n attempts to breakdown the implementation of ARIA within Artemis in a logical manner as per the aforementioned three pronged approach. It is \textbf{very important} to note that the approaches complement each other and are almost certainly never mutually exclusive in terms of intended outcomes. \textbf{It would be preferable to perceive the approach as incremental instead}.
 
 \subsubsection{Semantic Enhancement}
 
 The role attribute elaborates on the type of HTML element \cite{MDN} effectively defining user widgets and interfaces \cite{W3C2014a}. HTML5 native elements have default roles \textit{role attributes} inherited from WAI-ARIA 1.0 and whilst usually this makes the application of the role attribute to corresponding elements technically redundant, it can assist browsers that do not yet support native element semantics; at worst using the role attribute will do nothing \cite{W3C2014,CraigJamesH}.  More importantly whilst the role attribute is not additive, it is used by vendor specific assistive technology features to be used for traversing a UI and enhancing the user experience \cite{W3C2014a,MozillaDeveloperNetworkc}.
 
-The assignment of roles can be adherent to the \textit{Data Role Model} (Appendix \ref{fig:roleModelHTML}), which identifies a very wide spectrum of categories that a UI may adhere to and relevant ARIA options applicable to it. Alternatively custom roles are acceptable under WAI-ARIA for a variety of reasons not limited solely to accessing vendor specific special features \cite{W3C2014,CraigJamesH,MDN} but largely foregone as unfeasible for the purposes of the Artemis project; As it stands to reason that the value of implementation was relatively low. A benefit of  the conventional normative roles as per the Data Role Model is that it is a  practically feasible approach; The ARIA options available (and not available) are unambiguously clear and there are a number of pre-existing implementation patterns (such as those recommended by the MDN) for specific ARIA features that can and were easily adapted to Artemis, as explained in the next two sections.
+The assignment of roles can be adherent to the \textit{Data Role Model} (Appendix \textbf{\ref{fig:roleModelHTML}}), which identifies a very wide spectrum of categories that a UI may adhere to and relevant ARIA options applicable to it. Alternatively custom roles are acceptable under WAI-ARIA for a variety of reasons not limited solely to accessing vendor specific special features \cite{W3C2014,CraigJamesH,MDN} but largely foregone as unfeasible for the purposes of the Artemis project; As it stands to reason that the value of implementation was relatively low. A benefit of  the conventional normative roles as per the Data Role Model is that it is a  practically feasible approach; The ARIA options available (and not available) are unambiguously clear and there are a number of pre-existing implementation patterns (such as those recommended by the MDN) for specific ARIA features that can and were easily adapted to Artemis, as explained in the next two sections.
 
 \subsubsection{Dynamically Updated Content Semantics}
 
@@ -687,7 +697,7 @@ In these cases a combination powerful ARIA live region features and appropriate 
 
 \subsubsection{Creating Semantics}
 
-As explained earlier ARIA has been used to create semantics for the complex or unconventional UI features of Artemis.This has been achieved by  using \textit{aria-labelledby, aria-describedby} and \textit{aria-label}, as per normative implementation patters prescribed by the MDN (vide WAI-ARIA), combined with roles compatible with the Data Role Model to override the native semantics of HTML elements so as to allow assistive technology to access the data as intended.
+As explained earlier ARIA has been used to create semantics for the complex or unconventional UI features of Artemis.This has been achieved by  using \textit{aria-labelledby, aria-describedby} and \textit{aria-label}, as per normative implementation patterns prescribed by the MDN (vide WAI-ARIA), combined with roles compatible with the Data Role Model to override the native semantics of HTML elements so as to allow assistive technology to access the data as intended.
 
 The aria-labelledby attribute contains element ids of it's constituent parent elements \cite{MozillaDeveloperNetworkb}, creating relationships between objects and their labels; aria-described by is very similar to the aforementioned except that it is used to supplement the relationship with an apt description \cite{MozillaDeveloperNetworkd}. As per the MDN, \say{\textit{a label describes \textbf{the essence} of an object, while \textbf{a description} provides more information that the user might need}}. The important thing to note is that without unique element id\textquotesingle s, corresponding relationship labels and descriptions where necessary a UI can become inaccessible in the case of the former or  hard to understand in the case of the latter \cite{MozillaDeveloperNetworkb,MozillaDeveloperNetworkd}.
 
